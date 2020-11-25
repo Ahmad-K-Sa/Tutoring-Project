@@ -1,64 +1,90 @@
 package com.example.tutoringproject;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StudentRegisterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class StudentRegisterFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public StudentRegisterFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StudentRegisterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StudentRegisterFragment newInstance(String param1, String param2) {
-        StudentRegisterFragment fragment = new StudentRegisterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+SQLiteDatabase db;
+int ph=0;
+int le=0;
+View v;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_register, container, false);
+         v=inflater.inflate(R.layout.fragment_student_register, container, false);
+         return v;
     }
-}
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        View.OnClickListener onclickRegister = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
+                db = helper.getReadableDatabase();
+                ContentValues content = new ContentValues();
+                if (v != null) {
+                    EditText Fname = v.findViewById(R.id.FnameIn);
+                    String Fn = Fname.getText().toString();
+                    EditText Lname = v.findViewById(R.id.LnameIn);
+                    String Ln = Lname.getText().toString();
+                    EditText Username = v.findViewById(R.id.userIn);
+                    String user = Username.getText().toString();
+                    EditText Password = v.findViewById(R.id.PasswordIn);
+                    String pass = Password.getText().toString();
+                    EditText Address = v.findViewById(R.id.AddressIn);
+                    String addr = Address.getText().toString();
+                    EditText phone = v.findViewById(R.id.phoneIn);
+                    if (!phone.getText().toString().equals("")) {
+                        ph = Integer.parseInt(phone.getText().toString());
+                    }
+
+                    EditText level = v.findViewById(R.id.LevelIn);
+                    if (!level.getText().toString().equals("")) {
+                        le = Integer.parseInt(level.getText().toString());
+                    }
+                    content.put("FIRSTNAME", Fn);
+                    content.put("LASTNAME", Ln);
+                    content.put("USERNAME", user);
+                    content.put("PASSWORD", pass);
+                    content.put("ADDRESS", addr);
+                    content.put("PHONENUMBER", ph);
+                    content.put("LEVEL", le);
+                    db.insert("STUDENTS", null, content);
+                    ((MainActivity) getActivity()).flipStudentAccount();
+                }
+
+            }
+        };
+            View view = getView();
+
+            Button buttonregister = view.findViewById(R.id.sign);
+
+                buttonregister.setOnClickListener(onclickRegister);
+
+    }
+
+
+    }

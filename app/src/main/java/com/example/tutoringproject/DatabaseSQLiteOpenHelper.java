@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = " STUDENT DATA";
+    private static final String DB_NAME = "STUDENT DATA";
     private static final int DB_VERSION = 1;
 
     public DatabaseSQLiteOpenHelper(Context context) {
@@ -35,23 +35,23 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "PHONENUMBER INTEGER," +
                 "ADDRESS TEXT);";
 
-        String Schedules = "CREATE TABLE SCHEDULES (" +
-                "FROMDATE TEXT," +
-                "RESEVERED BOOLEAN,"+
-                "TODATE TEXT,"+
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "FOREIGN_KEY STUDENT_ID REFERENCES STUDENTS(_id),"+
-                "FOREIGN KEY (SCHEDULEKEY) REFERENCES TUTORS(SCHEDULEKEY));";
-
-        String Courses = "CREATE TABLE COURSES (" +
-                "NAME TEXT," +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "FOREIGN KEY (COURSES) REFERENCES TUTORS(COURSES));";
+//        String Schedules = "CREATE TABLE SCHEDULES (" +
+//                "FROMDATE TEXT," +
+//                "RESEVERED BOOLEAN,"+
+//                "TODATE TEXT,"+
+//                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+//                "FOREIGN_KEY STUDENT_ID REFERENCES STUDENTS(_id),"+
+//                "FOREIGN KEY (SCHEDULEKEY) REFERENCES TUTORS(SCHEDULEKEY));";
+//
+//        String Courses = "CREATE TABLE COURSES (" +
+//                "NAME TEXT," +
+//                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+//                "FOREIGN KEY (COURSES) REFERENCES TUTORS(COURSES));";
 
         db.execSQL(STUDENTS);
         db.execSQL(TUTORS);
-        db.execSQL(Schedules);
-        db.execSQL(Courses);
+//        db.execSQL(Schedules);
+//        db.execSQL(Courses);
     }
 
     private void insertStudent(SQLiteDatabase db,
