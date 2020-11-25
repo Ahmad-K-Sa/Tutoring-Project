@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Username"
-        android:textSize="50sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/usernameIn"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Password"
-        android:textSize="50sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/passwordInput"

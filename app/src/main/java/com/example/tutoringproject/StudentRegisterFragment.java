@@ -60,7 +60,6 @@ View v;
                     if (!phone.getText().toString().equals("")) {
                         ph = Integer.parseInt(phone.getText().toString());
                     }
-
                     EditText level = v.findViewById(R.id.LevelIn);
                     if (!level.getText().toString().equals("")) {
                         le = Integer.parseInt(level.getText().toString());
@@ -78,6 +77,7 @@ View v;
 
             }
         };
+
             View view = getView();
 
             Button buttonregister = view.findViewById(R.id.sign);

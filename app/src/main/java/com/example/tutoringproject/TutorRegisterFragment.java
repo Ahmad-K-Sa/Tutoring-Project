@@ -20,7 +20,7 @@ import org.w3c.dom.Text;
 
 public class TutorRegisterFragment extends Fragment {
     SQLiteDatabase db;
-    View view;
+    View v;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,26 +29,28 @@ public class TutorRegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.fragment_tutor_register, container, false);
-       return view;
+       v = inflater.inflate(R.layout.fragment_tutor_register, container, false);
+       return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        if (view != null) {
-            final EditText Username = view.findViewById(R.id.usernameIn);
-            final EditText Password = view.findViewById(R.id.passwordIn);
-            final EditText Fisrtname = view.findViewById(R.id.firstNameInput);
-            final EditText Courses = view.findViewById(R.id.coursesInput);
-            final EditText LastName = view.findViewById(R.id.lastNameInput);
-            final EditText Address = view.findViewById(R.id.addressInput);
-            final EditText PhoneNumber = view.findViewById(R.id.phoneNumberInput);
+
             View.OnClickListener onclickRegisterTutor = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
+                        if (v != null) {
+                            final EditText Username = v.findViewById(R.id.usernameIn);
+                            final EditText Password = v.findViewById(R.id.passwordIn);
+                            final EditText Fisrtname = v.findViewById(R.id.firstNameInput);
+                            final EditText Courses = v.findViewById(R.id.coursesInput);
+                            final EditText LastName = v.findViewById(R.id.lastNameInput);
+                            final EditText Address = v.findViewById(R.id.addressInput);
+                            final EditText PhoneNumber = v.findViewById(R.id.phoneNumberInput);
+
                         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                         db = helper.getWritableDatabase();
                         ContentValues cv = new ContentValues();
@@ -60,14 +62,16 @@ public class TutorRegisterFragment extends Fragment {
                         cv.put("ADDRESS", Address.getText().toString());
                         cv.put("LASTNAME", LastName.getText().toString());
                         db.insert("TUTORS", null, cv);
+                        Toast.makeText(getContext(), "hi", Toast.LENGTH_LONG);
                         ((MainActivity) getActivity()).flipTutorHomePage();
-                    } catch (Exception e) {
+                    } }
+                    catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             };
+            View view= getView();
             Button Register = view.findViewById(R.id.Register);
             Register.setOnClickListener(onclickRegisterTutor);
         }
     }
-}
