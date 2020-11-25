@@ -16,10 +16,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class StudentRegisterFragment extends Fragment {
-SQLiteDatabase db;
-int ph=0;
-int le=0;
-View v;
+    SQLiteDatabase db;
+    int ph = 0;
+    int le = 0;
+    View v;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,8 @@ View v;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         v=inflater.inflate(R.layout.fragment_student_register, container, false);
-         return v;
+        v = inflater.inflate(R.layout.fragment_student_register, container, false);
+        return v;
     }
 
     @Override
@@ -78,13 +78,13 @@ View v;
 
             }
         };
-            View view = getView();
+        View view = getView();
 
-            Button buttonregister = view.findViewById(R.id.sign);
+        Button buttonregister = view.findViewById(R.id.sign);
 
-                buttonregister.setOnClickListener(onclickRegister);
-
-    }
-
+        buttonregister.setOnClickListener(onclickRegister);
 
     }
+
+
+}
