@@ -26,7 +26,11 @@ View v;
         super.onCreate(savedInstanceState);
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,7 +75,9 @@ View v;
                     content.put("ADDRESS", addr);
                     content.put("PHONENUMBER", ph);
                     content.put("LEVEL", le);
-                    db.insert("STUDENTS", null, content);
+                    long err = db.insert("STUDENTS", null, content);
+                    if(err == -1) Toast.makeText(getContext(),"ERRORR",Toast.LENGTH_LONG);
+                    db.close();
                     ((MainActivity) getActivity()).flipStudentAccount();
                 }
 

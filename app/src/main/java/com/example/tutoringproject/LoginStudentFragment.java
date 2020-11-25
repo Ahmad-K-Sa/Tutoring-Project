@@ -20,6 +20,7 @@ public class LoginStudentFragment extends Fragment {
     Cursor cursor;
     String user;
     String pass;
+    View v;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,16 +28,24 @@ public class LoginStudentFragment extends Fragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        db.close();
+        cursor.close();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login_student, container, false);
+        v= inflater.inflate(R.layout.fragment_login_student, container, false);
+        return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
         View view = getView();
-        if(view!=null) {
+        if (view != null) {
             EditText username = view.findViewById(R.id.usernameIn);
             user = username.getText().toString();
             EditText password = view.findViewById(R.id.passwordIn);
@@ -54,22 +63,20 @@ public class LoginStudentFragment extends Fragment {
                     if (cursor.moveToFirst()) {
 
                         while (!cursor.isLast()) {
-                            cursor.moveToNext();
                             if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
                                 ((MainActivity) getActivity()).flipStudentAccount();
                                 //Pass Student ID
                             }
-
+                            cursor.moveToNext();
                         }
-                        cursor.moveToNext();
                         if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
                             ((MainActivity) getActivity()).flipStudentAccount();
+                        } else {
+                            TextView error = v.findViewById(R.id.error);
+                            error.setText("Incorrect username or password! Please try again");
                         }
-
-                        TextView error = view.findViewById(R.id.error);
-                        error.setText("Incorrect username or password! Please try again");
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

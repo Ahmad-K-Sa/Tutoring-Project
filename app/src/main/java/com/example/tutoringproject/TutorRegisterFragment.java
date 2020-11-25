@@ -30,14 +30,20 @@ public class TutorRegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       v = inflater.inflate(R.layout.fragment_tutor_register, container, false);
-       return v;
+        v = inflater.inflate(R.layout.fragment_tutor_register, container, false);
+        return v;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        db.close();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        v= getView();
+        v = getView();
         if (v != null) {
 
             View.OnClickListener onclickRegisterTutor = new View.OnClickListener() {
@@ -63,6 +69,7 @@ public class TutorRegisterFragment extends Fragment {
                         cv.put("ADDRESS", Address.getText().toString());
                         cv.put("LASTNAME", LastName.getText().toString());
                         db.insert("TUTORS", null, cv);
+                        db.close();
                         ((MainActivity) getActivity()).flipTutorHomePage();
                     } catch (Exception e) {
                         e.printStackTrace();
