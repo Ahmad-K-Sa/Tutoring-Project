@@ -43,7 +43,7 @@ public class StudentRegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
-                db = helper.getReadableDatabase();
+                db = helper.getWritableDatabase();
                 ContentValues content = new ContentValues();
                 if (v != null) {
                     EditText Fname = v.findViewById(R.id.FnameIn);
