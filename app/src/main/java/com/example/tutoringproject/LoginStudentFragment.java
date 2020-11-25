@@ -1,4 +1,4 @@
-package com.example.tuturingproject;
+package com.example.tutoringproject;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

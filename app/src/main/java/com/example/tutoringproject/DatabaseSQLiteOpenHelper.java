@@ -1,6 +1,5 @@
-package com.example.tuturingproject;
+package com.example.tutoringproject;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;

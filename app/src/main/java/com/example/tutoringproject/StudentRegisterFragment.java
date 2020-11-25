@@ -1,4 +1,4 @@
-package com.example.tuturingproject;
+package com.example.tutoringproject;
 
 import android.os.Bundle;
 
@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TutorFragment#newInstance} factory method to
+ * Use the {@link StudentRegisterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TutorFragment extends Fragment {
+public class StudentRegisterFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class TutorFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public TutorFragment() {
+    public StudentRegisterFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class TutorFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TutorFragment.
+     * @return A new instance of fragment StudentRegisterFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TutorFragment newInstance(String param1, String param2) {
-        TutorFragment fragment = new TutorFragment();
+    public static StudentRegisterFragment newInstance(String param1, String param2) {
+        StudentRegisterFragment fragment = new StudentRegisterFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +59,6 @@ public class TutorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutor, container, false);
+        return inflater.inflate(R.layout.fragment_student_register, container, false);
     }
 }
