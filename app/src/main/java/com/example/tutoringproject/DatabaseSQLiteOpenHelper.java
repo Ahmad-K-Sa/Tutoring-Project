@@ -29,19 +29,20 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "USERNAME TEXT," +
                 "PASSWORD TEXT," +
                 "COURSES INTEGER UNIQUE," +
-                "SCHEDULEKEY INTEGER UNIQUE," +
+//                "SCHEDULEKEY INTEGER UNIQUE," +
                 "FIRSTNAME TEXT ," +
                 "LASTNAME TEXT," +
                 "PHONENUMBER INTEGER," +
                 "ADDRESS TEXT);";
 
-//        String Schedules = "CREATE TABLE SCHEDULES (" +
-//                "FROMDATE TEXT," +
-//                "RESEVERED BOOLEAN,"+
-//                "TODATE TEXT,"+
-//                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-//                "FOREIGN_KEY STUDENT_ID REFERENCES STUDENTS(_id),"+
-//                "FOREIGN KEY (SCHEDULEKEY) REFERENCES TUTORS(SCHEDULEKEY));";
+        String Schedules = "CREATE TABLE SCHEDULES (" +
+                "DATE TEXT," +
+                "TIME TEXT,"+
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "STUDENT_ID INTEGER,"+
+                "TUTOR_ID INTEGER,"+
+                "FOREIGN_KEY STUDENT_ID REFERENCES STUDENTS(_id),"+
+                "FOREIGN KEY (Student_id) REFERENCES STUDENTS(_id));";
 //
 //        String Courses = "CREATE TABLE COURSES (" +
 //                "NAME TEXT," +
@@ -50,7 +51,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
 
         db.execSQL(STUDENTS);
         db.execSQL(TUTORS);
-//        db.execSQL(Schedules);
+        db.execSQL(Schedules);
 //        db.execSQL(Courses);
     }
 
