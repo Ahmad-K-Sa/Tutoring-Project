@@ -38,10 +38,12 @@ public class LoginStudentFragment extends Fragment {
     public void onStart() {
         super.onStart();
         View view = getView();
-        EditText username = view.findViewById(R.id.username);
-        user = username.getText().toString();
-        EditText password = view.findViewById(R.id.password);
-        pass = password.getText().toString();
+        if(view!=null) {
+            EditText username = view.findViewById(R.id.usernameIn);
+            user = username.getText().toString();
+            EditText password = view.findViewById(R.id.passwordIn);
+            pass = password.getText().toString();
+        }
         View.OnClickListener onclicklogin = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
