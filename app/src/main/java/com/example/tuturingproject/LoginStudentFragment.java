@@ -51,20 +51,28 @@ public class LoginStudentFragment extends Fragment {
                     db = helper.getReadableDatabase();
 
                     cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);
-                    cursor.moveToFirst();
-                    while (!cursor.isLast()) {
+                    if (cursor.moveToFirst()) {
+
+                        while (!cursor.isLast()) {
+                            cursor.moveToNext();
+                            if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
+                                ((MainActivity) getActivity()).flipStudentAccount();
+                            }
+
+                        }
+                        cursor.moveToNext();
                         if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
                             ((MainActivity) getActivity()).flipStudentAccount();
                         }
 
-                        cursor.moveToNext();
-
+                        TextView error = view.findViewById(R.id.error);
+                        error.setText("Incorrect username or password! Please try again");
                     }
-                    TextView error = view.findViewById(R.id.error);
-                    error.setText("Incorrect username or password! Please try again");
-                } catch (Exception e) {
+                }catch (Exception e) {
                     e.printStackTrace();
                 }
+                cursor.moveToNext();
+
             }
         };
         Button buttonlogin = view.findViewById(R.id.login);
