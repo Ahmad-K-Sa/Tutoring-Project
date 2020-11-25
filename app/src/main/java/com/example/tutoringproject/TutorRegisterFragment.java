@@ -21,6 +21,7 @@ import org.w3c.dom.Text;
 public class TutorRegisterFragment extends Fragment {
     SQLiteDatabase db;
     View view;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +39,18 @@ public class TutorRegisterFragment extends Fragment {
         super.onStart();
 
         if (view != null) {
-            final EditText Username = view.findViewById(R.id.usernameIn);
-            final EditText Password = view.findViewById(R.id.passwordIn);
-            final EditText Fisrtname = view.findViewById(R.id.firstNameInput);
-            final EditText Courses = view.findViewById(R.id.coursesInput);
-            final EditText LastName = view.findViewById(R.id.lastNameInput);
-            final EditText Address = view.findViewById(R.id.addressInput);
-            final EditText PhoneNumber = view.findViewById(R.id.phoneNumberInput);
+
             View.OnClickListener onclickRegisterTutor = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
+                        final EditText Username = view.findViewById(R.id.usernameIn);
+                        final EditText Password = view.findViewById(R.id.passwordIn);
+                        final EditText Fisrtname = view.findViewById(R.id.firstNameInput);
+                        final EditText Courses = view.findViewById(R.id.coursesInput);
+                        final EditText LastName = view.findViewById(R.id.lastNameInput);
+                        final EditText Address = view.findViewById(R.id.addressInput);
+                        final EditText PhoneNumber = view.findViewById(R.id.phoneNumberInput);
                         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                         db = helper.getWritableDatabase();
                         ContentValues cv = new ContentValues();
