@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class StudentFragment extends Fragment {
     SQLiteDatabase db;
@@ -30,13 +34,23 @@ public class StudentFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        View view = getView();
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
-        cursor = db.query("TUTORS", new String[]{"_id", "USERNAME", "PASSWORD","COURSES","FIRSTNAME","LASTNAME"}, null, null, null, null, null);
+        cursor = db.query("TUTORS", new String[]{"_id","FIRSTNAME","LASTNAME","COURSES"}, null, null, null, null, null);
+        ArrayList<String> TutorsInfo = new ArrayList<>();
+        cursor.moveToFirst();
         if(cursor.moveToFirst()){
             while(!cursor.isLast()){
-
+                TutorsInfo.add(cursor.getString(0) +" "+cursor.getString(1)+"\n" +cursor.getString(2));
+                cursor.moveToNext();
             }
+            TutorsInfo.add(cursor.getString(0) +" "+cursor.getString(1)+"\n" +cursor.getString(2));
+
+            ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1);
+
+            ListView lv = view.findViewById(R.id.tutorsListView);
+            lv.setAdapter(Tutors);
         }
     }
 }
