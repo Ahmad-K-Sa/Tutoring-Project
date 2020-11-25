@@ -72,7 +72,6 @@ public class LoginStudentFragment extends Fragment {
                     e.printStackTrace();
                 }
                 cursor.moveToNext();
-
             }
         };
         Button buttonlogin = view.findViewById(R.id.login);
