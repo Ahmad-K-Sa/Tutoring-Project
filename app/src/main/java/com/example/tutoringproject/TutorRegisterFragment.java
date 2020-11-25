@@ -51,6 +51,7 @@ public class TutorRegisterFragment extends Fragment {
                         final EditText LastName = v.findViewById(R.id.lastNameInput);
                         final EditText Address = v.findViewById(R.id.addressInput);
                         final EditText PhoneNumber = v.findViewById(R.id.phoneNumberInput);
+
                         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                         db = helper.getWritableDatabase();
                         ContentValues cv = new ContentValues();
