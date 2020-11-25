@@ -1,5 +1,9 @@
 package com.example.tutoringproject;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,58 +11,63 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TutorRegisterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.w3c.dom.Text;
+
 public class TutorRegisterFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TutorRegisterFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TutorRegisterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TutorRegisterFragment newInstance(String param1, String param2) {
-        TutorRegisterFragment fragment = new TutorRegisterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    SQLiteDatabase db;
+    View view;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutor_register, container, false);
+       view = inflater.inflate(R.layout.fragment_tutor_register, container, false);
+       return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (view != null) {
+            final EditText Username = view.findViewById(R.id.usernameIn);
+            final EditText Password = view.findViewById(R.id.passwordIn);
+            final EditText Fisrtname = view.findViewById(R.id.firstNameInput);
+            final EditText Courses = view.findViewById(R.id.coursesInput);
+            final EditText LastName = view.findViewById(R.id.lastNameInput);
+            final EditText Address = view.findViewById(R.id.addressInput);
+            final EditText PhoneNumber = view.findViewById(R.id.phoneNumberInput);
+            View.OnClickListener onclickRegisterTutor = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
+                        db = helper.getWritableDatabase();
+                        ContentValues cv = new ContentValues();
+                        cv.put("USERNAME", Username.getText().toString());
+                        cv.put("PASSWORD", Password.getText().toString());
+                        cv.put("FIRSTNAME", Fisrtname.getText().toString());
+                        cv.put("COURSES", Courses.getText().toString());
+                        cv.put("PHONENUMBER", Integer.parseInt(PhoneNumber.getText().toString()));
+                        cv.put("ADDRESS", Address.getText().toString());
+                        cv.put("LASTNAME", LastName.getText().toString());
+                        db.insert("TUTORS", null, cv);
+                        ((MainActivity) getActivity()).flipTutorHomePage();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            Button Register = view.findViewById(R.id.Register);
+            Register.setOnClickListener(onclickRegisterTutor);
+        }
     }
 }

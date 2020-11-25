@@ -59,6 +59,7 @@ public class LoginStudentFragment extends Fragment {
                             cursor.moveToNext();
                             if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
                                 ((MainActivity) getActivity()).flipStudentAccount();
+                                //Pass Student ID
                             }
 
                         }
@@ -73,7 +74,6 @@ public class LoginStudentFragment extends Fragment {
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
-                cursor.moveToNext();
             }
         };
         Button buttonlogin = view.findViewById(R.id.login);
