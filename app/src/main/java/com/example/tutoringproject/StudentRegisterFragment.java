@@ -1,6 +1,7 @@
 package com.example.tutoringproject;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -15,12 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class StudentRegisterFragment extends Fragment {
 SQLiteDatabase db;
 int ph=0;
 int le=0;
 View v;
-
+Cursor cursor;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,41 +51,59 @@ View v;
             public void onClick(View view) {
                 SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
                 db = helper.getWritableDatabase();
-                ContentValues content = new ContentValues();
-                if (v != null) {
-                    EditText Fname = v.findViewById(R.id.FnameIn);
-                    String Fn = Fname.getText().toString();
-                    EditText Lname = v.findViewById(R.id.LnameIn);
-                    String Ln = Lname.getText().toString();
-                    EditText Username = v.findViewById(R.id.userIn);
-                    String user = Username.getText().toString();
-                    EditText Password = v.findViewById(R.id.PasswordIn);
-                    String pass = Password.getText().toString();
-                    EditText Address = v.findViewById(R.id.AddressIn);
-                    String addr = Address.getText().toString();
-                    EditText phone = v.findViewById(R.id.phoneIn);
-                    if (!phone.getText().toString().equals("")) {
-                        ph = Integer.parseInt(phone.getText().toString());
+                cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);
+                ArrayList<String> Data = new ArrayList();
+
+                if (cursor.moveToFirst()) {
+                    while (!cursor.isLast()) {
+
+                        Data.add(cursor.getString(1) + "\n" + cursor.getString(2));
+
+                        cursor.moveToNext();
+
                     }
-                    EditText level = v.findViewById(R.id.LevelIn);
-                    if (!level.getText().toString().equals("")) {
-                        le = Integer.parseInt(level.getText().toString());
-                    }
-                    content.put("FIRSTNAME", Fn);
-                    content.put("LASTNAME", Ln);
-                    content.put("USERNAME", user);
-                    content.put("PASSWORD", pass);
-                    content.put("ADDRESS", addr);
-                    content.put("PHONENUMBER", ph);
-                    content.put("LEVEL", le);
-                    long err = db.insert("STUDENTS", null, content);
-                    if(err == -1) Toast.makeText(getContext(),"ERRORR",Toast.LENGTH_LONG);
-                    db.close();
-                    ((MainActivity) getActivity()).flipStudentAccount();
+                    Data.add(cursor.getString(1) + "\n" + cursor.getString(2));
+
+                    cursor.moveToNext();
                 }
 
+                    ContentValues content = new ContentValues();
+                    if (v != null) {
+                        EditText Fname = v.findViewById(R.id.FnameIn);
+                        String Fn = Fname.getText().toString();
+                        EditText Lname = v.findViewById(R.id.LnameIn);
+                        String Ln = Lname.getText().toString();
+                        EditText Username = v.findViewById(R.id.userIn);
+                        String user = Username.getText().toString();
+                        EditText Password = v.findViewById(R.id.PasswordIn);
+                        String pass = Password.getText().toString();
+                        EditText Address = v.findViewById(R.id.AddressIn);
+                        String addr = Address.getText().toString();
+                        EditText phone = v.findViewById(R.id.phoneIn);
+                        if (!phone.getText().toString().equals("")) {
+                            ph = Integer.parseInt(phone.getText().toString());
+                        }
+                        EditText level = v.findViewById(R.id.LevelIn);
+                        if (!level.getText().toString().equals("")) {
+                            le = Integer.parseInt(level.getText().toString());
+                        }
+                        content.put("FIRSTNAME", Fn);
+                        content.put("LASTNAME", Ln);
+                        content.put("USERNAME", user);
+                        content.put("PASSWORD", pass);
+                        content.put("ADDRESS", addr);
+                        content.put("PHONENUMBER", ph);
+                        content.put("LEVEL", le);
+                        long err = db.insert("STUDENTS", null, content);
+                        if (err == -1) Toast.makeText(getContext(), "ERRORR", Toast.LENGTH_LONG);
+                        db.close();
+                        ((MainActivity) getActivity()).flipStudentAccount();
+                    }
+
+                }
             }
-        };
+
+            ;
 
             View view = getView();
 
@@ -90,7 +111,8 @@ View v;
 
                 buttonregister.setOnClickListener(onclickRegister);
 
+        }
     }
 
 
-    }
+

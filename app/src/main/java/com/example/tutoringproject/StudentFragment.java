@@ -39,15 +39,14 @@ public class StudentFragment extends Fragment {
         db = helper.getWritableDatabase();
         cursor = db.query("TUTORS", new String[]{"_id","FIRSTNAME","LASTNAME","COURSES"}, null, null, null, null, null);
         ArrayList<String> TutorsInfo = new ArrayList<>();
-        cursor.moveToFirst();
         if(cursor.moveToFirst()){
             while(!cursor.isLast()){
-                TutorsInfo.add(cursor.getString(0) +" "+cursor.getString(1)+"\n" +cursor.getString(2));
+                TutorsInfo.add(cursor.getString(0) +" "+cursor.getString(1)+"\n" +cursor.getString(3));
                 cursor.moveToNext();
             }
-            TutorsInfo.add(cursor.getString(0) +" "+cursor.getString(1)+"\n" +cursor.getString(2));
+            TutorsInfo.add(cursor.getString(0) +" "+cursor.getString(1)+"\n" +cursor.getString(3));
 
-            ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1);
+            ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
 
             ListView lv = view.findViewById(R.id.tutorsListView);
             lv.setAdapter(Tutors);

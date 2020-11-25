@@ -19,6 +19,7 @@ public class LoginTutorFragment extends Fragment {
     Cursor cursor;
     String user;
     String pass;
+    View v;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,24 +31,25 @@ public class LoginTutorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_student, container, false);
+        v= inflater.inflate(R.layout.fragment_login_student, container, false);
+        return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        View view = getView();
-        if(view!=null) {
-            EditText username = view.findViewById(R.id.usernameIn);
-            user = username.getText().toString();
-            EditText password = view.findViewById(R.id.passwordIn);
-            pass = password.getText().toString();
-        }
+View view= getView();
         View.OnClickListener onclicklogin = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
 
+                    if(v!=null) {
+                        EditText username = v.findViewById(R.id.usernameIn);
+                        user = username.getText().toString();
+                        EditText password = v.findViewById(R.id.passwordIn);
+                        pass = password.getText().toString();
+                    }
                     SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                     db = helper.getReadableDatabase();
 
@@ -60,15 +62,15 @@ public class LoginTutorFragment extends Fragment {
                                 ((MainActivity) getActivity()).flipTutorAccount();
                                 //Pass Student ID
                             }
+                            cursor.moveToNext();
 
                         }
-                        cursor.moveToNext();
                         if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
                             ((MainActivity) getActivity()).flipTutorAccount();
+                        } else {
+                            TextView error = v.findViewById(R.id.error);
+                            error.setText("Incorrect username or password! Please try again");
                         }
-
-                        TextView error = view.findViewById(R.id.error);
-                        error.setText("Incorrect username or password! Please try again");
                     }
                 }catch (Exception e) {
                     e.printStackTrace();

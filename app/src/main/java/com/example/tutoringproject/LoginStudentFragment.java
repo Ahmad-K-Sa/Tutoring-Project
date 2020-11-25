@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class LoginStudentFragment extends Fragment {
@@ -21,6 +24,7 @@ public class LoginStudentFragment extends Fragment {
     String user;
     String pass;
     View v;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,27 +48,30 @@ public class LoginStudentFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        View view = getView();
-        if (view != null) {
-            EditText username = view.findViewById(R.id.usernameIn);
-            user = username.getText().toString();
-            EditText password = view.findViewById(R.id.passwordIn);
-            pass = password.getText().toString();
-        }
+
+
         View.OnClickListener onclicklogin = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
+                if (v != null) {
 
+                    EditText username = v.findViewById(R.id.usernameIn);
+                    user = username.getText().toString();
+
+                    EditText password = v.findViewById(R.id.passwordIn);
+                    pass = password.getText().toString();
+
+                }
                     SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                     db = helper.getReadableDatabase();
 
-                    cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);
                     if (cursor.moveToFirst()) {
-
                         while (!cursor.isLast()) {
                             if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
+
                                 ((MainActivity) getActivity()).flipStudentAccount();
+
                                 //Pass Student ID
                             }
                             cursor.moveToNext();
@@ -81,7 +88,7 @@ public class LoginStudentFragment extends Fragment {
                 }
             }
         };
-        Button buttonlogin = view.findViewById(R.id.login);
+        Button buttonlogin = v.findViewById(R.id.login);
 
         buttonlogin.setOnClickListener(onclicklogin);
 
@@ -92,7 +99,7 @@ public class LoginStudentFragment extends Fragment {
             }
         };
 
-        Button buttonsignup = view.findViewById(R.id.Signup);
+        Button buttonsignup = v.findViewById(R.id.Signup);
 
         buttonsignup.setOnClickListener(onclickSignup);
     }
