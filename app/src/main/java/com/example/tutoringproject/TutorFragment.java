@@ -32,7 +32,7 @@ public class TutorFragment extends Fragment {
         View.OnClickListener onclickSetSched = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).flipSetSchedule();
+//                ((MainActivity) getActivity()).flipSetSchedule();
 
             }
         };
@@ -44,7 +44,7 @@ public class TutorFragment extends Fragment {
         View.OnClickListener onclickViewSched = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).flipViewSchedule();
+//                ((MainActivity) getActivity()).flipViewSchedule();
 
             }
         };

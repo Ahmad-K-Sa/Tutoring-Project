@@ -41,7 +41,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "STUDENT_ID INTEGER,"+
                 "TUTOR_ID INTEGER,"+
-                "FOREIGN_KEY STUDENT_ID REFERENCES STUDENTS(_id),"+
+                "FOREIGN_KEY TUTOR_ID REFERENCES TUTORS(_id),"+
                 "FOREIGN KEY (Student_id) REFERENCES STUDENTS(_id));";
 //
 //        String Courses = "CREATE TABLE COURSES (" +
