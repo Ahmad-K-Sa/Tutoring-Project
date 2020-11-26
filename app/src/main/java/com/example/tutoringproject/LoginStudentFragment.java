@@ -65,6 +65,8 @@ public class LoginStudentFragment extends Fragment {
                 }
                     SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                     db = helper.getReadableDatabase();
+                    cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);
+
 
                     if (cursor.moveToFirst()) {
                         while (!cursor.isLast()) {
