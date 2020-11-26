@@ -13,11 +13,9 @@ import android.widget.Button;
 public class WelcomeFragment extends Fragment {
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -30,8 +28,8 @@ public class WelcomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        View view= getView();
-        View.OnClickListener onclickStudent= new View.OnClickListener() {
+        View view = getView();
+        View.OnClickListener onclickStudent = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).flipStudent();
@@ -42,7 +40,7 @@ public class WelcomeFragment extends Fragment {
 
         buttonStudent.setOnClickListener(onclickStudent);
 
-        View.OnClickListener onclickTutor= new View.OnClickListener() {
+        View.OnClickListener onclickTutor = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).flipTutor();

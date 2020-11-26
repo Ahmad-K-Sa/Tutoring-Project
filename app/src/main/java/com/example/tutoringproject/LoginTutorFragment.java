@@ -20,10 +20,10 @@ public class LoginTutorFragment extends Fragment {
     String user;
     String pass;
     View v;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

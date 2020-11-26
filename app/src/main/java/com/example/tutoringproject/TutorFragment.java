@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 public class TutorFragment extends Fragment {
     int TUTOR_ID;
+
     public TutorFragment(int TUTOR_ID) {
         this.TUTOR_ID = TUTOR_ID;
     }

@@ -41,7 +41,7 @@ public class LoginStudentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.fragment_login_student, container, false);
+        v = inflater.inflate(R.layout.fragment_login_student, container, false);
         return v;
     }
 
@@ -54,15 +54,15 @@ public class LoginStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                if (v != null) {
+                    if (v != null) {
 
-                    EditText username = v.findViewById(R.id.usernameIn);
-                    user = username.getText().toString();
+                        EditText username = v.findViewById(R.id.usernameIn);
+                        user = username.getText().toString();
 
-                    EditText password = v.findViewById(R.id.passwordIn);
-                    pass = password.getText().toString();
+                        EditText password = v.findViewById(R.id.passwordIn);
+                        pass = password.getText().toString();
 
-                }
+                    }
                     SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                     db = helper.getReadableDatabase();
                     cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);

@@ -61,9 +61,9 @@ public class SetScheduleFragment extends Fragment {
                         db = helper.getWritableDatabase();
 
                         ContentValues cv = new ContentValues();
-                        cv.put("Subject",subject.getText().toString());
-                        cv.put("TUTOR_ID",TUTOR_ID);
-                        cv.put("TIME",time.getText().toString());
+                        cv.put("Subject", subject.getText().toString());
+                        cv.put("TUTOR_ID", TUTOR_ID);
+                        cv.put("TIME", time.getText().toString());
                         db.insert("SCHEDULES", null, cv);
                         db.close();
 

@@ -18,16 +18,18 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipStudent(){
 
-    LoginStudentFragment loginstudentFragment = new LoginStudentFragment();
-    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+    public void flipStudent() {
+
+        LoginStudentFragment loginstudentFragment = new LoginStudentFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, loginstudentFragment);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
-}
-    public void flipTutor(){
+    }
+
+    public void flipTutor() {
 
         LoginTutorFragment logintutorFragment = new LoginTutorFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipStudentAccount(){
+
+    public void flipStudentAccount() {
 
         StudentFragment studentFragment = new StudentFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -45,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipStudentSignup(){
+
+    public void flipStudentSignup() {
 
         StudentRegisterFragment studentRegisterFragment = new StudentRegisterFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -54,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorAccount(int TUTOR_ID){
+
+    public void flipTutorAccount(int TUTOR_ID) {
 
         TutorFragment TutorFragment = new TutorFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -63,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorSignup(){
+
+    public void flipTutorSignup() {
         TutorRegisterFragment TutorRegisterFragment = new TutorRegisterFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, TutorRegisterFragment);
@@ -71,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorHomePage(int TUTOR_ID){
+
+    public void flipTutorHomePage(int TUTOR_ID) {
         TutorFragment TutorFragment = new TutorFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, TutorFragment);
@@ -79,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-  public void flipSetSchedule(int TUTOR_ID){
+
+    public void flipSetSchedule(int TUTOR_ID) {
         SetScheduleFragment schedule = new SetScheduleFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, schedule);
@@ -87,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipViewSchedule(int TUTOR_ID){
+
+    public void flipViewSchedule(int TUTOR_ID) {
         ViewScheduelFragment schedule = new ViewScheduelFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, schedule);
