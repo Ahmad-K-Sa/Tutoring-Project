@@ -51,21 +51,7 @@ Cursor cursor;
             public void onClick(View view) {
                 SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
                 db = helper.getWritableDatabase();
-                cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);
-                ArrayList<String> Data = new ArrayList();
 
-                if (cursor.moveToFirst()) {
-                    while (!cursor.isLast()) {
-
-                        Data.add(cursor.getString(1) + "\n" + cursor.getString(2));
-
-                        cursor.moveToNext();
-
-                    }
-                    Data.add(cursor.getString(1) + "\n" + cursor.getString(2));
-
-                    cursor.moveToNext();
-                }
 
                     ContentValues content = new ContentValues();
                     if (v != null) {
@@ -95,9 +81,10 @@ Cursor cursor;
                         content.put("PHONENUMBER", ph);
                         content.put("LEVEL", le);
                         long err = db.insert("STUDENTS", null, content);
+
                         if (err == -1) Toast.makeText(getContext(), "ERRORR", Toast.LENGTH_LONG);
                         db.close();
-                        ((MainActivity) getActivity()).flipStudentAccount();
+                        ((MainActivity) getActivity()).flipStudentAccount((int)err);
                     }
 
                 }

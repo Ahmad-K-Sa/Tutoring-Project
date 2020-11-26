@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 
 
 public class LoginStudentFragment extends Fragment {
@@ -24,6 +22,7 @@ public class LoginStudentFragment extends Fragment {
     String user;
     String pass;
     View v;
+    int id;
 
 
     @Override
@@ -41,7 +40,7 @@ public class LoginStudentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.fragment_login_student, container, false);
+        v = inflater.inflate(R.layout.fragment_login_student, container, false);
         return v;
     }
 
@@ -54,15 +53,15 @@ public class LoginStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                if (v != null) {
+                    if (v != null) {
 
-                    EditText username = v.findViewById(R.id.usernameIn);
-                    user = username.getText().toString();
+                        EditText username = v.findViewById(R.id.usernameIn);
+                        user = username.getText().toString();
 
-                    EditText password = v.findViewById(R.id.passwordIn);
-                    pass = password.getText().toString();
+                        EditText password = v.findViewById(R.id.passwordIn);
+                        pass = password.getText().toString();
 
-                }
+                    }
                     SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                     db = helper.getReadableDatabase();
                     cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD"}, null, null, null, null, null);
@@ -71,15 +70,15 @@ public class LoginStudentFragment extends Fragment {
                     if (cursor.moveToFirst()) {
                         while (!cursor.isLast()) {
                             if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
-
-                                ((MainActivity) getActivity()).flipStudentAccount();
+                                id = Integer.parseInt(cursor.getString(0));
+                                ((MainActivity) getActivity()).flipStudentAccount(id);
 
                                 //Pass Student ID
                             }
                             cursor.moveToNext();
                         }
                         if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
-                            ((MainActivity) getActivity()).flipStudentAccount();
+                            ((MainActivity) getActivity()).flipStudentAccount(id);
                         } else {
                             TextView error = v.findViewById(R.id.error);
                             error.setText("Incorrect username or password! Please try again");

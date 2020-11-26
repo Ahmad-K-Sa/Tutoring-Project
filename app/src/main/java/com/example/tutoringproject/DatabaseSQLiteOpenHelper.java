@@ -44,6 +44,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "TUTOR_ID INTEGER,"+
                 "FOREIGN_KEY TUTOR_ID REFERENCES TUTORS(_id),"+
                 "FOREIGN KEY (Student_id) REFERENCES STUDENTS(_id));";
+
 //
 //        String Courses = "CREATE TABLE COURSES (" +
 //                "NAME TEXT," +
