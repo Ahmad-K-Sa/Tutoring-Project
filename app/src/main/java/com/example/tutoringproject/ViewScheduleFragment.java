@@ -18,13 +18,13 @@ import com.example.tutoringproject.R;
 
 import java.util.ArrayList;
 
-public class ViewScheduelFragment extends Fragment {
+public class ViewScheduleFragment extends Fragment {
     int TUTOR_ID;
     SQLiteDatabase db;
     Cursor cursor;
     View v;
 
-    public ViewScheduelFragment(int TUTOR_ID) {
+    public ViewScheduleFragment(int TUTOR_ID) {
         this.TUTOR_ID = TUTOR_ID;
     }
 

@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void flipViewSchedule(int TUTOR_ID) {
-        ViewScheduelFragment schedule = new ViewScheduelFragment(TUTOR_ID);
+        ViewScheduleFragment schedule = new ViewScheduleFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, schedule);
         ft.addToBackStack(null);
