@@ -38,6 +38,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
         String Schedules = "CREATE TABLE SCHEDULES (" +
                 "DATE TEXT," +
                 "TIME TEXT,"+
+                "Subject Text,"+
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "STUDENT_ID INTEGER,"+
                 "TUTOR_ID INTEGER,"+
