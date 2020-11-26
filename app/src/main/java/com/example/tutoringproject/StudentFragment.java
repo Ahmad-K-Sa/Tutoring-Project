@@ -34,9 +34,8 @@ public class StudentFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_student, container, false);
     }
-
-    public void getId(int id) {
-        StudentId = id;
+    public void getId(int id){
+        StudentId= id;
     }
 
     @Override
@@ -46,27 +45,27 @@ public class StudentFragment extends Fragment {
         ListView lv = view.findViewById(R.id.tutorsListView);
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
-        cursor = db.query("TUTORS", new String[]{"_id", "FIRSTNAME", "LASTNAME", "COURSES"}, null, null, null, null, null);
+        cursor = db.query("TUTORS", new String[]{"_id","FIRSTNAME","LASTNAME","COURSES"}, null, null, null, null, null);
         ArrayList<String> TutorsInfo = new ArrayList<>();
-        if (cursor.moveToFirst()) {
-            while (!cursor.isLast()) {
-                TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2));
+        if(cursor.moveToFirst()){
+            while(!cursor.isLast()){
+                TutorsInfo.add(cursor.getString(1)+" " +cursor.getString(2));
                 cursor.moveToNext();
             }
-            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2));
+            TutorsInfo.add(cursor.getString(1)+" " +cursor.getString(2));
 
             ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
 
 
             lv.setAdapter(Tutors);
         }
-//        AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                ((MainActivity) getActivity()).flipTutorCourses((int)id, StudentId);
-//
-//            }
-//        };
-//        lv.setOnItemClickListener(adapter);
+        AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                ((MainActivity) getActivity()).flipTutorCourses((int)id, StudentId);
+
+            }
+        };
+        lv.setOnItemClickListener(adapter);
     }
 }

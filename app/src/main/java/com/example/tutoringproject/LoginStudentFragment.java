@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class LoginStudentFragment extends Fragment {
@@ -24,7 +21,7 @@ public class LoginStudentFragment extends Fragment {
     String user;
     String pass;
     View v;
-
+    int id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,15 +68,15 @@ public class LoginStudentFragment extends Fragment {
                     if (cursor.moveToFirst()) {
                         while (!cursor.isLast()) {
                             if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
-
-                                ((MainActivity) getActivity()).flipStudentAccount();
+                                id = Integer.parseInt(cursor.getString(0));
+                                ((MainActivity) getActivity()).flipStudentAccount(id);
 
                                 //Pass Student ID
                             }
                             cursor.moveToNext();
                         }
                         if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass)) {
-                            ((MainActivity) getActivity()).flipStudentAccount();
+                            ((MainActivity) getActivity()).flipStudentAccount(id);
                         } else {
                             TextView error = v.findViewById(R.id.error);
                             error.setText("Incorrect username or password! Please try again");
@@ -102,7 +99,6 @@ public class LoginStudentFragment extends Fragment {
         };
 
         Button buttonsignup = v.findViewById(R.id.Signup);
-
         buttonsignup.setOnClickListener(onclickSignup);
     }
 }

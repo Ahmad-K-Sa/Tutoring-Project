@@ -54,8 +54,6 @@ public class StudentRegisterFragment extends Fragment {
             public void onClick(View view) {
                 SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
                 db = helper.getWritableDatabase();
-
-
                 ContentValues content = new ContentValues();
                 if (v != null) {
                     EditText Fname = v.findViewById(R.id.FnameIn);
@@ -87,9 +85,8 @@ public class StudentRegisterFragment extends Fragment {
 
                     if (err == -1) Toast.makeText(getContext(), "ERRORR", Toast.LENGTH_LONG);
                     db.close();
-//                        ((MainActivity) getActivity()).flipStudentAccount((int)err);
+                    ((MainActivity) getActivity()).flipStudentAccount((int) err);
                 }
-
             }
         };
 
@@ -101,6 +98,3 @@ public class StudentRegisterFragment extends Fragment {
 
     }
 }
-
-
-
