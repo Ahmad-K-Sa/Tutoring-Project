@@ -13,9 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="28dp"
         android:layout_marginTop="327dp"
-        android:text="Set Schedule">
-
-    </Button>
+        android:text="Set Schedule" />
 
     <Button
         android:id="@+id/viewschedule"
@@ -25,5 +23,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="327dp"
         android:layout_marginEnd="28dp"
-        android:text="View Schedule"></Button>
+        android:text="View Schedule" />
+
 </RelativeLayout>

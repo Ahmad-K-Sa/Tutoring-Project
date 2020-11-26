@@ -84,7 +84,7 @@ Cursor cursor;
 
                         if (err == -1) Toast.makeText(getContext(), "ERRORR", Toast.LENGTH_LONG);
                         db.close();
-                        ((MainActivity) getActivity()).flipStudentAccount((int)err);
+//                        ((MainActivity) getActivity()).flipStudentAccount((int)err);
                     }
 
                 }

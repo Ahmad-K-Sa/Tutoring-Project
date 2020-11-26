@@ -70,7 +70,7 @@ public class TutorRegisterFragment extends Fragment {
                         cv.put("LASTNAME", LastName.getText().toString());
                         db.insert("TUTORS", null, cv);
                         db.close();
-                        ((MainActivity) getActivity()).flipTutorHomePage();
+                        ((MainActivity) getActivity()).flipTutor();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

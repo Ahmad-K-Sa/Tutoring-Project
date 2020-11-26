@@ -28,7 +28,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "USERNAME TEXT," +
                 "PASSWORD TEXT," +
-                "COURSES INTEGER UNIQUE," +
+                "COURSES TEXT," +
 //                "SCHEDULEKEY INTEGER UNIQUE," +
                 "FIRSTNAME TEXT ," +
                 "LASTNAME TEXT," +
@@ -37,12 +37,12 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
 
         String Schedules = "CREATE TABLE SCHEDULES (" +
                 "DATE TEXT," +
-                "TIME TEXT,"+
-                "Subject Text,"+
+                "TIME TEXT," +
+                "Subject Text," +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "STUDENT_ID INTEGER,"+
-                "TUTOR_ID INTEGER,"+
-                "FOREIGN_KEY TUTOR_ID REFERENCES TUTORS(_id),"+
+                "STUDENT_ID INTEGER," +
+                "TUTOR_ID INTEGER," +
+                "FOREIGN_KEY TUTOR_ID REFERENCES TUTORS(_id)," +
                 "FOREIGN KEY (Student_id) REFERENCES STUDENTS(_id));";
 
 //
@@ -61,6 +61,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                                String answer,
                                int imageID) {
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 

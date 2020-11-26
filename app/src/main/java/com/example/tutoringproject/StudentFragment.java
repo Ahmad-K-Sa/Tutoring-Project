@@ -59,13 +59,13 @@ public class StudentFragment extends Fragment {
 
             lv.setAdapter(Tutors);
         }
-        AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                ((MainActivity) getActivity()).flipTutorCourses((int)id, StudentId);
-
-            }
-        };
-        lv.setOnItemClickListener(adapter);
+//        AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                ((MainActivity) getActivity()).flipTutorCourses((int)id, StudentId);
+//
+//            }
+//        };
+//        lv.setOnItemClickListener(adapter);
     }
     }

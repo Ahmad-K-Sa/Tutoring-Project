@@ -1,17 +1,19 @@
 package com.example.tutoringproject;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+
 
 public class TutorFragment extends Fragment {
-
+    int TUTOR_ID;
+    public TutorFragment(int TUTOR_ID) {
+        this.TUTOR_ID = TUTOR_ID;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class TutorFragment extends Fragment {
         View.OnClickListener onclickSetSched = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ((MainActivity) getActivity()).flipSetSchedule();
+                ((MainActivity) getActivity()).flipSetSchedule(TUTOR_ID);
 
             }
         };
@@ -44,8 +46,7 @@ public class TutorFragment extends Fragment {
         View.OnClickListener onclickViewSched = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ((MainActivity) getActivity()).flipViewSchedule();
-
+                ((MainActivity) getActivity()).flipViewSchedule(TUTOR_ID);
             }
         };
         Button buttonsched = view.findViewById(R.id.viewschedule);

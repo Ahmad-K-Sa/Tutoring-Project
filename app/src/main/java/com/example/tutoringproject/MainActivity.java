@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipStudentAccount(int id){
+    public void flipStudentAccount(){
+
         StudentFragment studentFragment = new StudentFragment();
-        studentFragment.getId(id);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, studentFragment);
         ft.addToBackStack(null);
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorAccount(){
+    public void flipTutorAccount(int TUTOR_ID){
 
-        TutorFragment TutorFragment = new TutorFragment();
+        TutorFragment TutorFragment = new TutorFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, TutorFragment);
         ft.addToBackStack(null);
@@ -71,40 +71,28 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorHomePage(){
-        TutorFragment TutorFragment = new TutorFragment();
+    public void flipTutorHomePage(int TUTOR_ID){
+        TutorFragment TutorFragment = new TutorFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, TutorFragment);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-  public void flipSetSchedule(){
-        SetScheduleFragment schedule = new SetScheduleFragment();
+  public void flipSetSchedule(int TUTOR_ID){
+        SetScheduleFragment schedule = new SetScheduleFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, schedule);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipViewSchedule(){
-        ViewScheduleFragment schedule = new ViewScheduleFragment();
+    public void flipViewSchedule(int TUTOR_ID){
+        ViewScheduelFragment schedule = new ViewScheduelFragment(TUTOR_ID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, schedule);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorCourses(int id, int studentID){
-
-       TutorCoursesFragment tutor = new TutorCoursesFragment();
-       tutor.setId(id);
-       tutor.getStudentId(studentID);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment, tutor);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
 }
