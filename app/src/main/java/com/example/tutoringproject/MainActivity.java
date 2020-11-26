@@ -79,20 +79,20 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-//    public void flipSetSchedule(){
-//        SetScheduleFragment schedule = new SetScheduleFragment();
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        ft.replace(R.id.fragment, schedule);
-//        ft.addToBackStack(null);
-//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//        ft.commit();
-//    }
-//    public void flipViewSchedule(){
-//        ViewScheduleFragment schedule = new ViewScheduleFragment();
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        ft.replace(R.id.fragment, schedule);
-//        ft.addToBackStack(null);
-//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//        ft.commit();
-//    }
+  public void flipSetSchedule(){
+        SetScheduleFragment schedule = new SetScheduleFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, schedule);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+    public void flipViewSchedule(){
+        ViewScheduleFragment schedule = new ViewScheduleFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, schedule);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
 }

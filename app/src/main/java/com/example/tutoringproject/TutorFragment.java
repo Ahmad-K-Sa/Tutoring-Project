@@ -29,27 +29,26 @@ public class TutorFragment extends Fragment {
     public void onStart() {
         super.onStart();
         View view = getView();
-//        View.OnClickListener onclickSetSched = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ((MainActivity) getActivity()).flipSetSchedule();
-//
-//            }
-//        };
+        View.OnClickListener onclickSetSched = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).flipSetSchedule();
+
+            }
+        };
         Button buttonSched = view.findViewById(R.id.setSchedule);
 
-//        buttonSched.setOnClickListener(onclickSetSched);
+        buttonSched.setOnClickListener(onclickSetSched);
 
 
-//        View.OnClickListener onclickViewSched = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ((MainActivity) getActivity()).flipViewSchedule();
-//
-//            }
-//        };
+        View.OnClickListener onclickViewSched = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).flipViewSchedule();
+
+            }
+        };
         Button buttonsched = view.findViewById(R.id.viewschedule);
-
-//        buttonsched.setOnClickListener(onclickViewSched);
+        buttonsched.setOnClickListener(onclickViewSched);
     }
 }
