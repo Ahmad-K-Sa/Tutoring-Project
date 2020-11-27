@@ -55,6 +55,7 @@ public class SetScheduleFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     try {
+                        EditText date = v.findViewById(R.id.editTextDate);
                         EditText time = v.findViewById(R.id.editTextTime);
                         EditText subject = v.findViewById(R.id.editTextSubject);
 
@@ -64,8 +65,9 @@ public class SetScheduleFragment extends Fragment {
                         ContentValues cv = new ContentValues();
                         cv.put("SUBJECT", subject.getText().toString());
                         cv.put("TUTOR_ID", TUTOR_ID);
+                        cv.put("DATE", date.getText().toString());
                         cv.put("TIME", time.getText().toString());
-                    int id= (int) db.insert("SCHEDULES", null, cv);
+                        int id = (int) db.insert("SCHEDULES", null, cv);
                         db.close();
 
                         ((MainActivity) getActivity()).flipTutorAccount(TUTOR_ID);

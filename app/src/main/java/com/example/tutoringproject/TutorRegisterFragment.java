@@ -68,9 +68,10 @@ public class TutorRegisterFragment extends Fragment {
                         cv.put("PHONENUMBER", Integer.parseInt(PhoneNumber.getText().toString()));
                         cv.put("ADDRESS", Address.getText().toString());
                         cv.put("LASTNAME", LastName.getText().toString());
-                        db.insert("TUTORS", null, cv);
+                        long id = db.insert("TUTORS", null, cv);
                         db.close();
-                        ((MainActivity) getActivity()).flipTutor();
+                        ((MainActivity) getActivity()).flipTutorAccount((int) id);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

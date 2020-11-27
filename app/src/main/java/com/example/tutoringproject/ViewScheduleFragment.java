@@ -54,14 +54,16 @@ public class ViewScheduleFragment extends Fragment {
         ListView lv = v.findViewById(R.id.ListViewSched);
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
-        cursor = db.query("SCHEDULES", new String[]{"_id", "TIME", "SUBJECT"}, null, null, null, null, null);
+        cursor = db.query("SCHEDULES", new String[]{"_id", "TIME", "SUBJECT","TUTOR_ID"}, null, null, null, null, null);
         ArrayList<String> SchedItems = new ArrayList<>();
         if (cursor.moveToFirst()) {
             while (!cursor.isLast()) {
-                SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
+                if (cursor.getInt(3) == TUTOR_ID)
+                    SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
                 cursor.moveToNext();
             }
-            SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
+            if (cursor.getInt(3) == TUTOR_ID)
+                SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
             ArrayAdapter ItemsToDisplay = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, SchedItems);
 
             lv.setAdapter(ItemsToDisplay);
