@@ -19,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
     public void flipStudent() {
 
         LoginStudentFragment loginstudentFragment = new LoginStudentFragment();
