@@ -77,7 +77,8 @@ public class TutorCoursesFragment extends Fragment {
                 int id2 = (int) id;
                 SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
                 db = helper.getWritableDatabase();
-                cursor = db.query("SCHEDULES", new String[]{"_id", "SUBJECT", "DATE", "TIME", "STUDENT_ID", "TUTOR_ID"}, "TUTOR_ID=?", new String[]{Integer.toString(ID +1 )}, null, null, null);
+                cursor = db.query("SCHEDULES", new String[]{"_id", "SUBJECT", "DATE", "TIME", "STUDENT_ID", "TUTOR_ID"}, "TUTOR_ID=?", new String[]{Integer.toString(ID)}, null, null, null);
+                cursor.moveToFirst();
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("SUBJECT", cursor.getString(1));
                 contentValues.put("DATE", cursor.getString(2));
@@ -85,7 +86,7 @@ public class TutorCoursesFragment extends Fragment {
                 contentValues.put("STUDENT_ID", studentId);
                 contentValues.put("TUTOR_ID", Integer.parseInt(cursor.getString(5)));
 
-                String whereClause = "id=?";
+                String whereClause = "_id=?";
                 String whereArgs[] = {Integer.toString(Sched_IDs.get(position))};
                 db.update("SCHEDULES", contentValues, whereClause, whereArgs);
 
