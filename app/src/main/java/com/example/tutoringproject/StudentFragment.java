@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -34,27 +35,39 @@ public class StudentFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_student, container, false);
     }
-    public void getId(int id){
-        StudentId= id;
+
+    public void getId(int id) {
+        StudentId = id;
     }
 
     @Override
     public void onStart() {
         super.onStart();
         View view = getView();
+
+        Button Logout = view.findViewById(R.id.LogoutButton);
+
+        View.OnClickListener LogoutButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).HomeScreen();
+            }
+        };
+        Logout.setOnClickListener(LogoutButton);
+
         ListView lv = view.findViewById(R.id.tutorsListView);
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
-        cursor = db.query("TUTORS", new String[]{"_id","FIRSTNAME","LASTNAME","COURSES"}, null, null, null, null, null);
+        cursor = db.query("TUTORS", new String[]{"_id", "FIRSTNAME", "LASTNAME", "COURSES"}, null, null, null, null, null);
         ArrayList<String> TutorsInfo = new ArrayList<>();
         final ArrayList<Integer> TutuorIDs = new ArrayList<>();
-        if(cursor.moveToFirst()){
-            while(!cursor.isLast()){
-                TutorsInfo.add(cursor.getString(1)+" " +cursor.getString(2));
+        if (cursor.moveToFirst()) {
+            while (!cursor.isLast()) {
+                TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2));
                 TutuorIDs.add(cursor.getInt(0));
                 cursor.moveToNext();
             }
-            TutorsInfo.add(cursor.getString(1)+" " +cursor.getString(2));
+            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2));
             TutuorIDs.add(cursor.getInt(0));
             ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
             lv.setAdapter(Tutors);

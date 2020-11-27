@@ -52,5 +52,16 @@ public class TutorFragment extends Fragment {
         };
         Button buttonsched = view.findViewById(R.id.viewschedule);
         buttonsched.setOnClickListener(onclickViewSched);
+
+        Button Logout = view.findViewById(R.id.LogoutButton);
+
+        View.OnClickListener LogoutButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).HomeScreen();
+            }
+        };
+        Logout.setOnClickListener(LogoutButton);
+
     }
 }

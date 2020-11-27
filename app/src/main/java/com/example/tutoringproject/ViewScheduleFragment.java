@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.tutoringproject.R;
@@ -52,6 +53,26 @@ public class ViewScheduleFragment extends Fragment {
     public void onStart() {
         super.onStart();
         ListView lv = v.findViewById(R.id.ListViewSched);
+        Button Home  = v.findViewById(R.id.homeButton);
+
+        View.OnClickListener BackHome = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).flipTutorHomePage(TUTOR_ID);
+            }
+        };
+        Home.setOnClickListener(BackHome);
+
+        Button Logout  = v.findViewById(R.id.LogoutButton);
+
+        View.OnClickListener LogoutButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).HomeScreen();
+            }
+        };
+        Logout.setOnClickListener(LogoutButton);
+
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
         cursor = db.query("SCHEDULES", new String[]{"_id", "TIME", "SUBJECT","TUTOR_ID"}, null, null, null, null, null);

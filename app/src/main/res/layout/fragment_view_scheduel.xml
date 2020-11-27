@@ -6,16 +6,34 @@
     tools:context="com.example.tutoringproject.ViewScheduleFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All scheduels"
-        android:textSize="25sp" />
+    <LinearLayout
+        android:id="@+id/RelConatiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All scheduels"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home" />
+
+        <Button
+            android:id="@+id/LogoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/ListViewSched"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25sp"/>
+        android:layout_marginTop="25sp" />
 
 </FrameLayout>

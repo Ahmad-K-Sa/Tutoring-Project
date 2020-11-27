@@ -6,6 +6,12 @@
     tools:context=".StudentFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/LogoutButton"
+        android:layout_alignEnd="@+id/names"/>
     <TextView
         android:id="@+id/names"
         android:layout_width="match_parent"
@@ -14,8 +20,10 @@
 
     <ListView
         android:id="@+id/tutorsListView"
+        android:layout_marginVertical="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/names" />
+        android:layout_below="@+id/names"
+        android:layout_marginTop="-21dp" />
 
 </RelativeLayout>

@@ -1,8 +1,10 @@
 package com.example.tutoringproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Application;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    public void HomeScreen() {
+        WelcomeFragment WF = new WelcomeFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, WF);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     public void flipStudent() {
@@ -91,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipStudentAccount(int id){
+
+    public void flipStudentAccount(int id) {
         StudentFragment studentFragment = new StudentFragment();
         studentFragment.getId(id);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -109,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-    public void flipTutorCourses(int id, int studentID){
+
+    public void flipTutorCourses(int id, int studentID) {
 
         TutorCoursesFragment tutor = new TutorCoursesFragment();
         tutor.setId(id);

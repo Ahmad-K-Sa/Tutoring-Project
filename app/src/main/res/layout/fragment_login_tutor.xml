@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginStudentFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".LoginStudentFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -31,11 +31,12 @@
         android:id="@+id/passwordIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></EditText>
+
     <Button
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/login"></Button>
+        android:text="Login"></Button>
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,13 +44,23 @@
         android:text="You don't have an account?"
         android:textSize="30sp">
         ></TextView>
+
     <Button
+        android:id="@+id/Signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/Signup"></Button>
+        android:text="Sign Up"></Button>
+
+    <Button
+        android:id="@+id/BackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back" />
+
     <TextView
+        android:id="@+id/error"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/error"></TextView>
+        android:layout_height="wrap_content"></TextView>
 </LinearLayout>

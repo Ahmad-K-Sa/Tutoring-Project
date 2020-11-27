@@ -50,6 +50,26 @@ public class SetScheduleFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (v != null) {
+            Button Home  = v.findViewById(R.id.homeButton);
+
+            View.OnClickListener BackHome = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) getActivity()).flipTutorHomePage(TUTOR_ID);
+                }
+            };
+            Home.setOnClickListener(BackHome);
+
+            Button Logout  = v.findViewById(R.id.LogoutButton);
+
+            View.OnClickListener LogoutButton = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) getActivity()).HomeScreen();
+                }
+            };
+            Logout.setOnClickListener(LogoutButton);
+
             Button submit = v.findViewById(R.id.Submit);
             View.OnClickListener onclickRegisterSched = new View.OnClickListener() {
                 @Override

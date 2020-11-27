@@ -44,6 +44,15 @@ public class LoginTutorFragment extends Fragment {
                 try {
 
                     if (v != null) {
+                        Button BackToMain = v.findViewById(R.id.BackButton);
+                        View.OnClickListener MainMenu = new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ((MainActivity) getActivity()).HomeScreen();
+                            }
+                        };
+                        BackToMain.setOnClickListener(MainMenu);
+
                         EditText username = v.findViewById(R.id.usernameIn);
                         user = username.getText().toString();
                         EditText password = v.findViewById(R.id.passwordIn);

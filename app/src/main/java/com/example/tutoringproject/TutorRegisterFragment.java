@@ -46,6 +46,16 @@ public class TutorRegisterFragment extends Fragment {
         v = getView();
         if (v != null) {
 
+            Button BackToMain = v.findViewById(R.id.BackButton);
+
+            View.OnClickListener MainMenu = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) getActivity()).HomeScreen();
+                }
+            };
+            BackToMain.setOnClickListener(MainMenu);
+
             View.OnClickListener onclickRegisterTutor = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
