@@ -21,6 +21,7 @@ public class SetScheduleFragment extends Fragment {
     SQLiteDatabase db;
     View v;
     int TUTOR_ID;
+    int id;
 
     public SetScheduleFragment(int TUTOR_ID) {
         this.TUTOR_ID = TUTOR_ID;
@@ -61,10 +62,10 @@ public class SetScheduleFragment extends Fragment {
                         db = helper.getWritableDatabase();
 
                         ContentValues cv = new ContentValues();
-                        cv.put("Subject", subject.getText().toString());
+                        cv.put("SUBJECT", subject.getText().toString());
                         cv.put("TUTOR_ID", TUTOR_ID);
                         cv.put("TIME", time.getText().toString());
-                        db.insert("SCHEDULES", null, cv);
+                    int id= (int) db.insert("SCHEDULES", null, cv);
                         db.close();
 
                         ((MainActivity) getActivity()).flipTutorAccount(TUTOR_ID);
