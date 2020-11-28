@@ -48,7 +48,15 @@ public class StudentRegisterFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Button BackToMain = v.findViewById(R.id.BackButton);
 
+        View.OnClickListener MainMenu = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).HomeScreen();
+            }
+        };
+        BackToMain.setOnClickListener(MainMenu);
         View.OnClickListener onclickRegister = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,17 +64,6 @@ public class StudentRegisterFragment extends Fragment {
                 db = helper.getWritableDatabase();
                 ContentValues content = new ContentValues();
                 if (v != null) {
-
-                    Button BackToMain = v.findViewById(R.id.BackButton);
-
-                    View.OnClickListener MainMenu = new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            ((MainActivity) getActivity()).HomeScreen();
-                        }
-                    };
-                    BackToMain.setOnClickListener(MainMenu);
-
                     EditText Fname = v.findViewById(R.id.FnameIn);
                     String Fn = Fname.getText().toString();
                     EditText Lname = v.findViewById(R.id.LnameIn);

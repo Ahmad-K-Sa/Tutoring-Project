@@ -38,20 +38,20 @@ public class LoginTutorFragment extends Fragment {
     public void onStart() {
         super.onStart();
         View view = getView();
+        Button BackToMain = v.findViewById(R.id.BackButton);
+        View.OnClickListener MainMenu = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).HomeScreen();
+            }
+        };
+        BackToMain.setOnClickListener(MainMenu);
         View.OnClickListener onclicklogin = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
 
                     if (v != null) {
-                        Button BackToMain = v.findViewById(R.id.BackButton);
-                        View.OnClickListener MainMenu = new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                ((MainActivity) getActivity()).HomeScreen();
-                            }
-                        };
-                        BackToMain.setOnClickListener(MainMenu);
 
                         EditText username = v.findViewById(R.id.usernameIn);
                         user = username.getText().toString();
