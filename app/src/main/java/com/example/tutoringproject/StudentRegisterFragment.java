@@ -34,7 +34,7 @@ public class StudentRegisterFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        db.close();
+//        db.close();
     }
 
     @Override
