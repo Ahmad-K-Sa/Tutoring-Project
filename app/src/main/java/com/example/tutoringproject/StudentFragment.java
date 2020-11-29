@@ -39,7 +39,6 @@ public class StudentFragment extends Fragment {
     public void getId(int id) {
         StudentId = id;
     }
-
     @Override
     public void onStart() {
         super.onStart();
