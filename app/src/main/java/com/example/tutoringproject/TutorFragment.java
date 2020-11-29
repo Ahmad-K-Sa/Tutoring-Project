@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 public class TutorFragment extends Fragment {
     int TUTOR_ID;
-
+    View v;
     public TutorFragment(int TUTOR_ID) {
         this.TUTOR_ID = TUTOR_ID;
     }
@@ -25,7 +25,8 @@ public class TutorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutor, container, false);
+        v = inflater.inflate(R.layout.fragment_tutor, container, false);
+        return v;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class TutorFragment extends Fragment {
 
             }
         };
-        Button buttonSched = view.findViewById(R.id.setSchedule);
+        Button buttonSched = v.findViewById(R.id.setSchedule);
 
         buttonSched.setOnClickListener(onclickSetSched);
 
@@ -50,18 +51,18 @@ public class TutorFragment extends Fragment {
                 ((MainActivity) getActivity()).flipViewSchedule(TUTOR_ID);
             }
         };
-        Button buttonsched = view.findViewById(R.id.viewschedule);
+        Button buttonsched = v.findViewById(R.id.viewschedule);
         buttonsched.setOnClickListener(onclickViewSched);
 
-        Button Logout = view.findViewById(R.id.LogoutButton);
-
-        View.OnClickListener LogoutButton = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).HomeScreen();
-            }
-        };
-        Logout.setOnClickListener(LogoutButton);
+//        Button Logout = v.findViewById(R.id.LogoutButton);
+//
+//        View.OnClickListener LogoutButton = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity) getActivity()).HomeScreen();
+//            }
+//        };
+//        Logout.setOnClickListener(LogoutButton);
 
     }
 }

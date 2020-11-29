@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.tutoringproject.R;
@@ -52,9 +56,14 @@ public class ViewScheduleFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ListView lv = v.findViewById(R.id.ListViewSched);
-        Button Home  = v.findViewById(R.id.homeButton);
-
+//        ListView lv = v.findViewById(R.id.ListViewSched);
+        LinearLayout layout = v.findViewById(R.id.RelConatiner);
+        RecyclerView RV = v.findViewById(R.id.Sched_Recycler);
+        Button Home = v.findViewById(R.id.homeButton);
+        if (RV.getParent() != null) {
+            ((ViewGroup) RV.getParent()).removeView(RV); // <- fix
+        }
+        layout.addView(RV);
         View.OnClickListener BackHome = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +72,7 @@ public class ViewScheduleFragment extends Fragment {
         };
         Home.setOnClickListener(BackHome);
 
-        Button Logout  = v.findViewById(R.id.LogoutButton);
+        Button Logout = v.findViewById(R.id.LogoutButton);
 
         View.OnClickListener LogoutButton = new View.OnClickListener() {
             @Override
@@ -75,19 +84,50 @@ public class ViewScheduleFragment extends Fragment {
 
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
-        cursor = db.query("SCHEDULES", new String[]{"_id", "TIME", "SUBJECT","TUTOR_ID"}, null, null, null, null, null);
+        cursor = db.query("SCHEDULES", new String[]{"_id", "TIME", "SUBJECT", "TUTOR_ID", "DATE", "STUDENT_ID"}, null, null, null, null, null);
         ArrayList<String> SchedItems = new ArrayList<>();
+        int size = 0;
         if (cursor.moveToFirst()) {
             while (!cursor.isLast()) {
                 if (cursor.getInt(3) == TUTOR_ID)
-                    SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
+                    size++;
                 cursor.moveToNext();
             }
             if (cursor.getInt(3) == TUTOR_ID)
-                SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
-            ArrayAdapter ItemsToDisplay = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, SchedItems);
+                size++;
+        }
+        String[] Time = new String[size];
+        String[] Date = new String[size];
+        Integer[] S_IDs = new Integer[size];
+        String[] Courses = new String[size];
+        int pos = 0;
+        cursor = db.query("SCHEDULES", new String[]{"_id", "TIME", "SUBJECT", "TUTOR_ID", "DATE", "STUDENT_ID"}, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            while (!cursor.isLast()) {
+                if (cursor.getInt(3) == TUTOR_ID) {
+                    Time[pos] = cursor.getString(1);
+                    Courses[pos] = cursor.getString(2);
+                    S_IDs[pos] = cursor.getInt(5);
+                    Date[pos] = cursor.getString(4);
+                    pos++;
+                }
+//                    SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
+                cursor.moveToNext();
 
-            lv.setAdapter(ItemsToDisplay);
+            }
+            if (cursor.getInt(3) == TUTOR_ID) {
+                Time[pos] = cursor.getString(1);
+                Courses[pos] = cursor.getString(2);
+                S_IDs[pos] = cursor.getInt(5);
+                Date[pos] = cursor.getString(4);
+            }
+//                SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
+//            ArrayAdapter ItemsToDisplay = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, SchedItems);
+            ScheduleCardAdapter Adapter = new ScheduleCardAdapter(Time, Date, S_IDs, Courses);
+            RV.setAdapter(Adapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            RV.setLayoutManager(layoutManager);
+//            lv.setAdapter(ItemsToDisplay);
         }
     }
 }

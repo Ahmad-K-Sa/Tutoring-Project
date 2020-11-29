@@ -5,10 +5,12 @@
     android:orientation="vertical"
     tools:context="com.example.tutoringproject.ViewScheduleFragment">
 
+
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/RelConatiner"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="wrap_content">
 
         <TextView
@@ -28,12 +30,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logout" />
-    </LinearLayout>
 
-    <ListView
-        android:id="@+id/ListViewSched"
+
+<!--    <ListView-->
+<!--        android:id="@+id/ListViewSched"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="25sp" />-->
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25sp" />
+        android:scrollbars="horizontal"
+        android:id="@+id/Sched_Recycler"
+        tools:context=".ViewScheduleFragment"/>
+    </LinearLayout>
 
 </FrameLayout>
