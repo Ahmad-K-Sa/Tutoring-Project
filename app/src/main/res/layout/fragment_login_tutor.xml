@@ -107,9 +107,5 @@
         android:layout_marginBottom="-3dp"
         android:text="Back" />
 
-    <TextView
-        android:id="@+id/error"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </RelativeLayout>

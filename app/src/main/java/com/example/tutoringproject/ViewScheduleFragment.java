@@ -57,7 +57,7 @@ public class ViewScheduleFragment extends Fragment {
     public void onStart() {
         super.onStart();
 //        ListView lv = v.findViewById(R.id.ListViewSched);
-        LinearLayout layout = v.findViewById(R.id.RelConatiner);
+        LinearLayout layout = v.findViewById(R.id.RelContainer);
         RecyclerView RV = v.findViewById(R.id.Sched_Recycler);
         Button Home = v.findViewById(R.id.homeButton);
         if (RV.getParent() != null) {

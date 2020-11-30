@@ -1,73 +1,113 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context="com.example.tutoringproject.SetScheduleFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Set scheduel timing"
-        android:textSize="40sp" />
-
-    <LinearLayout
+        android:layout_margin="20dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        android:id="@+id/schedule"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:text="Set Schedule Timing"
+        android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home" />
 
-        <Button
-            android:id="@+id/LogoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout" />
-    </LinearLayout>
+
+
 
     <TextView
+        android:layout_margin="20dp"
+        android:layout_below="@+id/schedule"
         android:id="@+id/Subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subject"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
         android:textSize="25sp" />
 
     <EditText
         android:id="@+id/editTextSubject"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></EditText>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Subject"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"></EditText>
 
     <TextView
+        android:layout_margin="20dp"
+        android:layout_below="@+id/editTextSubject"
         android:id="@+id/Date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Date"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
         android:textSize="25sp" />
 
     <EditText
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/Date"
         android:id="@+id/editTextDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></EditText>
 
     <TextView
+        android:layout_below="@+id/editTextDate"
         android:id="@+id/Time"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Time"
         android:textSize="25sp" />
 
     <EditText
+        android:layout_marginStart="20dp"
         android:id="@+id/editTextTime"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></EditText>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Time"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="3dp"></EditText>
 
     <Button
         android:id="@+id/Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="161dp"
+        android:layout_marginBottom="100dp"
         android:text="Submit" />
-</LinearLayout>
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:text="Home" />
+
+    <Button
+        android:id="@+id/LogoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="322dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="-1dp"
+        android:text="Logout" />
+</RelativeLayout>

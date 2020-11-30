@@ -62,11 +62,11 @@ public class StudentFragment extends Fragment {
         final ArrayList<Integer> TutuorIDs = new ArrayList<>();
         if (cursor.moveToFirst()) {
             while (!cursor.isLast()) {
-                TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2));
+                TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2) + "\n" + cursor.getString(3));
                 TutuorIDs.add(cursor.getInt(0));
                 cursor.moveToNext();
             }
-            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2));
+            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2)+ "\n" + cursor.getString(3));
             TutuorIDs.add(cursor.getInt(0));
             ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
             lv.setAdapter(Tutors);

@@ -3,7 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TutorFragment">
+    tools:context=".TutorFragment"
+    android:background="@drawable/background"
+    >
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="127dp"
+        android:src="@drawable/logo2"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Welcome Our Brilliant Tutor!"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"></TextView>
 
     <Button
         android:id="@+id/setSchedule"
@@ -11,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="327dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="479dp"
         android:text="Set Schedule" />
 
     <Button
@@ -21,13 +44,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="327dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="479dp"
+        android:layout_marginEnd="19dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
         android:text="View Schedule" />
+
     <Button
+        android:id="@+id/LogoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/LogoutButton"/>
+        android:layout_below="@+id/viewschedule"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="305dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        android:text="Logout" />
 
 </RelativeLayout>

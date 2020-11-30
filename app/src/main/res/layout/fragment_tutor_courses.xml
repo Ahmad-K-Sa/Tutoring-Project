@@ -1,13 +1,27 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tutoringproject.TutorCoursesFragment">
+    tools:context="com.example.tutoringproject.TutorCoursesFragment"
+    android:background="@drawable/background">
+<TextView
+    android:fontFamily="sans-serif-light"
+    android:layout_margin="20dp"
+    android:id="@+id/courses"
+    android:layout_centerHorizontal="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="List of Available Courses:"
+    android:textColor="@color/black"
+    android:textSize="25sp" android:textStyle="bold"></TextView>
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/courses"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/list"></ListView>
 
-</LinearLayout>
+</RelativeLayout>
