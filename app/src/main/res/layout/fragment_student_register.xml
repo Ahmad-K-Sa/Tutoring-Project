@@ -4,167 +4,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StudentRegisterFragment">
-
-    <TextView
-        android:id="@+id/Fname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="-8dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="0dp"
-        android:text="First Name:"
-        android:textSize="30sp" />
-
-    <EditText
-        android:id="@+id/FnameIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="244dp"
-        android:layout_marginTop="26dp"></EditText>
-
-    <TextView
-        android:id="@+id/Lname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="113dp"
-        android:text="Last Name:"
-        android:textSize="30sp" />
-
-    <EditText
-        android:id="@+id/LnameIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="107dp"></EditText>
+    tools:context=".StudentRegisterFragment" android:background="@drawable/background">
 
     <TextView
         android:id="@+id/user"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="200dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
         android:text="Username:"
-        android:textSize="30sp" />
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/userIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="194dp"></EditText>
+        android:layout_below="@+id/user"
+      android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        ></EditText>
 
     <TextView
         android:id="@+id/Password"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/userIn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="299dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
         android:text="Password:"
-        android:textSize="30sp" />
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/PasswordIn"
-        android:layout_width="wrap_content"
+        android:inputType="textPassword"
+        android:layout_below="@+id/Password"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="301dp"></EditText>
+        android:layout_width="match_parent"></EditText>
+
+    <TextView
+        android:id="@+id/Fname"
+        android:layout_below="@+id/PasswordIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
+        android:text="First Name:"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/FnameIn"
+        android:layout_below="@+id/Fname"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"></EditText>
+
+    <TextView
+        android:id="@+id/Lname"
+        android:layout_below="@+id/FnameIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
+        android:text="Last Name:"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/LnameIn"
+        android:layout_below="@+id/Lname"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        ></EditText>
 
     <TextView
         android:id="@+id/Address"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/LnameIn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="406dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
         android:text="Address:"
-        android:textSize="30sp" />
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/AddressIn"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/Address"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="405dp"></EditText>
+        android:layout_width="match_parent"></EditText>
 
     <TextView
         android:id="@+id/phone"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/AddressIn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="509dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
         android:text="Phone:"
-        android:textSize="30sp" />
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/phoneIn"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/phone"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="255dp"
-        android:layout_marginTop="515dp"></EditText>
+        android:layout_width="match_parent"></EditText>
 
     <TextView
         android:id="@+id/Level"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/phoneIn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="600dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
         android:text="Level:"
-        android:textSize="30sp" />
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/LevelIn"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/Level"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="263dp"
-        android:layout_marginTop="595dp"></EditText>
+        android:layout_width="match_parent"></EditText>
 
     <Button
         android:id="@+id/sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="16dp"
+        android:layout_below="@+id/LevelIn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="Register"></Button>
 
     <Button
         android:id="@+id/BackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="1dp"
         android:text="Back" />
 </RelativeLayout>

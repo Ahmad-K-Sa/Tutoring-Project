@@ -1,33 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginStudentFragment">
+
+    tools:context=".LoginStudentFragment" android:background="@drawable/background">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/logo2"></ImageView>
+
     <TextView
+        android:layout_marginStart="20dp"
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:layout_marginTop="29dp"
+        android:fontFamily="sans-serif-light"
         android:text="Username"
-        android:textSize="50sp" />
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/usernameIn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        />
 
     <TextView
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameIn"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-light"
         android:text="Password"
-        android:textSize="50sp" />
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <EditText
+        android:inputType="textPassword"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/password"
         android:id="@+id/passwordIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -36,29 +72,44 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:layout_below="@+id/passwordIn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:text="Login" />
 
     <TextView
+        android:id="@+id/noAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You don't have an account?"
-        android:textSize="30sp"/>
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-light"
+        android:text="No Account Yet? Create One"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/Signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/noAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
         android:text="Sign Up" />
+
     <Button
         android:id="@+id/BackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-3dp"
         android:text="Back" />
 
     <TextView
         android:id="@+id/error"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</LinearLayout>
+</RelativeLayout>
