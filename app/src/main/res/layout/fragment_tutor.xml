@@ -54,13 +54,17 @@
         android:id="@+id/LogoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewschedule"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="305dp"
         android:layout_marginBottom="3dp"
         android:fontFamily="sans-serif"
-        android:textColor="@color/black"
-        android:text="Logout" />
+        android:text="Logout"
+        android:textColor="@color/black" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Info"
+        android:id="@+id/Info"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

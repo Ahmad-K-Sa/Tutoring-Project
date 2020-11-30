@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.tutoringproject.ViewTutorFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/UserName"
+        android:layout_centerHorizontal="true"
+        android:text="Name"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textSize="35dp" />
+
+    <TextView
+        android:id="@+id/UserName"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ProfilePic"
+        android:layout_centerHorizontal="true"
+        android:text="Username" />
+    <ImageView
+        android:id="@+id/ProfilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxWidth="40dp"
+        android:maxHeight="40dp"
+        android:src="@drawable/tutordefault" />
+
+
+
+    <TextView
+        android:id="@+id/PhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:text="Number"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/Address"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PhoneNumber"
+        android:text="Address"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/Courses"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:layout_below="@+id/PhoneNumber"
+        android:layout_centerHorizontal="true" />
+
+</LinearLayout>

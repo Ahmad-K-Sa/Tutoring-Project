@@ -54,7 +54,6 @@ public class ViewScheduleFragment extends Fragment {
     }
 
 
-
     @Override
     public void onStart() {
         super.onStart();

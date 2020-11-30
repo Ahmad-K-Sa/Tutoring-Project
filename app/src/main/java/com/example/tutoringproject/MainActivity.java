@@ -26,6 +26,23 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
+    public void StudentInfo(int TID){
+        ViewStudentProfile WF = new ViewStudentProfile(TID);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, WF);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+    public void TutorInfo(int TID){
+        ViewTutorFragment WF = new ViewTutorFragment(TID);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, WF);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
     public void HomeScreen() {
         WelcomeFragment WF = new WelcomeFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

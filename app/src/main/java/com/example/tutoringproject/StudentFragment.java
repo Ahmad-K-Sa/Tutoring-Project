@@ -43,9 +43,16 @@ public class StudentFragment extends Fragment {
     public void onStart() {
         super.onStart();
         View view = getView();
+        Button ViewInfo = view.findViewById(R.id.Info);
+        View.OnClickListener Info = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).StudentInfo(StudentId);
+            }
+        };
+        ViewInfo.setOnClickListener(Info);
 
         Button Logout = view.findViewById(R.id.LogoutButton);
-
         View.OnClickListener LogoutButton = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
