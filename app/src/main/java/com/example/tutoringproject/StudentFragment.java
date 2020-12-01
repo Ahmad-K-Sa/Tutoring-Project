@@ -39,6 +39,7 @@ public class StudentFragment extends Fragment {
     public void getId(int id) {
         StudentId = id;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -51,7 +52,6 @@ public class StudentFragment extends Fragment {
             }
         };
         ViewInfo.setOnClickListener(Info);
-
         Button Logout = view.findViewById(R.id.LogoutButton);
         View.OnClickListener LogoutButton = new View.OnClickListener() {
             @Override
@@ -60,7 +60,6 @@ public class StudentFragment extends Fragment {
             }
         };
         Logout.setOnClickListener(LogoutButton);
-
         ListView lv = view.findViewById(R.id.tutorsListView);
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
@@ -73,7 +72,7 @@ public class StudentFragment extends Fragment {
                 TutuorIDs.add(cursor.getInt(0));
                 cursor.moveToNext();
             }
-            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2)+ "\n" + cursor.getString(3));
+            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2) + "\n" + cursor.getString(3));
             TutuorIDs.add(cursor.getInt(0));
             ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
             lv.setAdapter(Tutors);

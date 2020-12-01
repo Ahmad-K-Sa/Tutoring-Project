@@ -74,5 +74,15 @@ public class TutorFragment extends Fragment {
         };
         ViewInfo.setOnClickListener(Info);
 
+        Button EditInfo = v.findViewById(R.id.Edit);
+
+        View.OnClickListener Edit = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).TutorEditInfo(TUTOR_ID);
+            }
+        };
+        EditInfo.setOnClickListener(Edit);
+
     }
 }
