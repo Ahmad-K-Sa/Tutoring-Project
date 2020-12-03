@@ -50,7 +50,7 @@ public class SetScheduleFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (v != null) {
-            Button Home  = v.findViewById(R.id.homeButton);
+            Button Home = v.findViewById(R.id.homeButton);
 
             View.OnClickListener BackHome = new View.OnClickListener() {
                 @Override
@@ -60,7 +60,7 @@ public class SetScheduleFragment extends Fragment {
             };
             Home.setOnClickListener(BackHome);
 
-            Button Logout  = v.findViewById(R.id.LogoutButton);
+            Button Logout = v.findViewById(R.id.LogoutButton);
 
             View.OnClickListener LogoutButton = new View.OnClickListener() {
                 @Override
