@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.tutoringproject.R;
-public class ViewStudentProfile extends Fragment {
+
+public class ViewStudentFragment extends Fragment {
     int STUDENT_ID;
     SQLiteDatabase db;
     Cursor cursor;
@@ -25,11 +26,13 @@ public class ViewStudentProfile extends Fragment {
         db.close();
         cursor.close();
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    public ViewStudentProfile(int SID){
+
+    public ViewStudentFragment(int SID) {
         this.STUDENT_ID = SID;
     }
 
@@ -44,13 +47,13 @@ public class ViewStudentProfile extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-            super.onStart();
-            SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
-            db = helper.getWritableDatabase();
-            cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "FIRSTNAME", "LASTNAME", "LEVEL", "PHONENUMBER", "ADDRESS"}, "_id=?", new String[]{Integer.toString(STUDENT_ID)}, null, null, null);
-            cursor.moveToFirst();
+        super.onStart();
+        SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
+        db = helper.getWritableDatabase();
+        cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "FIRSTNAME", "LASTNAME", "LEVEL", "PHONENUMBER", "ADDRESS"}, "_id=?", new String[]{Integer.toString(STUDENT_ID)}, null, null, null);
+        if (cursor.moveToFirst()) {
             TextView Name = v.findViewById(R.id.Name);
-            Name.setText(cursor.getString(2) +" "+ cursor.getString(3));
+            Name.setText(cursor.getString(2) + " " + cursor.getString(3));
             TextView User = v.findViewById(R.id.UserName);
             User.setText(cursor.getString(1));
             TextView Phone = v.findViewById(R.id.PhoneNumber);
@@ -58,6 +61,7 @@ public class ViewStudentProfile extends Fragment {
             TextView Address = v.findViewById(R.id.Address);
             Address.setText(cursor.getString(6));
             TextView Courses = v.findViewById(R.id.Courses);
-            Courses.setText("Level: "+cursor.getInt(4));
+            Courses.setText("Level: " + cursor.getInt(4));
+        }
     }
 }

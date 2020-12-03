@@ -92,6 +92,7 @@ public class EditTutorInfoFragment extends Fragment {
                     String whereClause = "_id=?";
                     String whereArgs[] = {Integer.toString(TUTOR_ID)};
                     db.update("TUTORS", cv, whereClause, whereArgs);
+                    ((MainActivity) getActivity()).flipTutorHomePage(TUTOR_ID);
 
                 }
             };

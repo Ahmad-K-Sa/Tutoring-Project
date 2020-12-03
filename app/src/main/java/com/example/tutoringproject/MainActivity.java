@@ -1,10 +1,8 @@
 package com.example.tutoringproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Application;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void StudentInfo(int TID){
-        ViewStudentProfile WF = new ViewStudentProfile(TID);
+        ViewStudentFragment WF = new ViewStudentFragment(TID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, WF);
         ft.addToBackStack(null);
@@ -87,16 +85,6 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    public void flipStudentAccount() {
-
-        StudentFragment studentFragment = new StudentFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment, studentFragment);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
     public void flipStudentSignup() {
 
         StudentRegisterFragment studentRegisterFragment = new StudentRegisterFragment();
@@ -137,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void flipStudentAccount(int id) {
         StudentFragment studentFragment = new StudentFragment();
-        studentFragment.getId(id);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, studentFragment);
         ft.addToBackStack(null);

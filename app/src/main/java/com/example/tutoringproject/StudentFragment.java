@@ -71,7 +71,6 @@ public class StudentFragment extends Fragment {
             }
         };
         Logout.setOnClickListener(LogoutButton);
-//        ListView lv = view.findViewById(R.id.tutorsListView);
 
         LinearLayout layout = view.findViewById(R.id.RelContainer);
         RecyclerView TutorList = view.findViewById(R.id.TutorList);
@@ -79,12 +78,9 @@ public class StudentFragment extends Fragment {
             ((ViewGroup) TutorList.getParent()).removeView(TutorList); // <- fix
         }
         layout.addView(TutorList);
-
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
-        cursor = db.query("TUTORS", new String[]{"_id","USERNAME", "FIRSTNAME", "LASTNAME", "PHONENUMBER","ADDRESS","COURSES"}, null, null, null, null, null);
-//        ArrayList<String> TutorsInfo = new ArrayList<>();
-//        final ArrayList<Integer> TutuorIDs = new ArrayList<>();
+        cursor = db.query("TUTORS", new String[]{"_id", "USERNAME", "FIRSTNAME", "LASTNAME", "PHONENUMBER", "ADDRESS", "COURSES"}, null, null, null, null, null);
 
         int size = cursor.getCount();
         IDs = new Integer[size];
@@ -99,8 +95,6 @@ public class StudentFragment extends Fragment {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isLast()) {
-//                TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2) + "\n" + cursor.getString(3));
-//                TutuorIDs.add(cursor.getInt(0));
                 IDs[pos] = cursor.getInt(0);
                 Usernames[pos] = cursor.getString(1);
                 Firstnames[pos] = cursor.getString(2);
@@ -119,33 +113,21 @@ public class StudentFragment extends Fragment {
             Courses[pos] = cursor.getString(6);
             IDs[pos] = cursor.getInt(0);
 
-            TutorCardAdapter adapter = new TutorCardAdapter(StudentId,IDs,Usernames,Firstnames,Lastnames,PhoneNums,Addresses,Courses);
+            TutorCardAdapter adapter = new TutorCardAdapter(StudentId, IDs, Usernames, Firstnames, Lastnames, PhoneNums, Addresses, Courses);
             TutorList.setAdapter(adapter);
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             TutorList.setLayoutManager(layoutManager);
-//            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2) + "\n" + cursor.getString(3));
-//            TutuorIDs.add(cursor .getInt(0));
-//            ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
-//            lv.setAdapter(Tutors);
+
+            Button EditInfo = view.findViewById(R.id.Edit);
+
+            View.OnClickListener Edit = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) getActivity()).StudentEditInfo(StudentId);
+                }
+            };
+            EditInfo.setOnClickListener(Edit);
         }
-//        AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                ((MainActivity) getActivity()).flipTutorCourses(TutuorIDs.get(position), StudentId);
-//            }
-//        };
-//        lv.setOnItemClickListener(adapter);
-
-        Button EditInfo = view.findViewById(R.id.Edit);
-
-        View.OnClickListener Edit = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).StudentEditInfo(StudentId);
-            }
-        };
-        EditInfo.setOnClickListener(Edit);
-
     }
 }

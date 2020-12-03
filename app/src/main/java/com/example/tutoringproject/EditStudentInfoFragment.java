@@ -89,6 +89,7 @@ public class EditStudentInfoFragment extends Fragment {
                     String whereClause = "_id=?";
                     String whereArgs[] = {Integer.toString(Student_ID)};
                     db.update("STUDENTS", cv, whereClause, whereArgs);
+                    ((MainActivity) getActivity()).flipStudentAccount(Student_ID);
                 }
             };
             Button Save = v.findViewById(R.id.Submit);
