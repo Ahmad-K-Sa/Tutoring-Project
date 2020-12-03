@@ -23,9 +23,10 @@ public class EditTutorInfoFragment extends Fragment {
     Cursor cursor;
     View v;
 
-    public EditTutorInfoFragment (int id){
+    public EditTutorInfoFragment(int id) {
         this.TUTOR_ID = id;
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -52,7 +53,6 @@ public class EditTutorInfoFragment extends Fragment {
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
         cursor = db.query("TUTORS", new String[]{"_id", "USERNAME", "PASSWORD", "FIRSTNAME", "LASTNAME", "COURSES", "PHONENUMBER", "ADDRESS"}, "_id=?", new String[]{Integer.toString(TUTOR_ID)}, null, null, null);
-        cursor.moveToFirst();
         if (cursor.moveToFirst()) {
             EditText USERNAME = v.findViewById(R.id.UserName);
             EditText PASSWORD = v.findViewById(R.id.PASSWORD);

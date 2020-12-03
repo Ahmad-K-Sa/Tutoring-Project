@@ -5,60 +5,59 @@
     android:orientation="vertical"
     tools:context="com.example.tutoringproject.EditTutorInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <EditText
         android:id="@+id/UserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Username" />
+        android:text="Username"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/PASSWORD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="PASSWORD" />
+        android:text="PASSWORD"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/FIRSTNAME"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="FIRSTNAME" />
+        android:text="FIRSTNAME"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/LASTNAME"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="LASTNAME" />
+        android:text="LASTNAME"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/COURSES"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="COURSES" />
+        android:text="COURSES"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/PHONENUMBER"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:inputType="number"
         android:text="PHONENUMBER"
-        android:inputType="number"/>
+        android:textAlignment="center" />
+
     <EditText
         android:id="@+id/ADDRESS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="ADDRESS" />
+        android:text="ADDRESS"
+        android:textAlignment="center" />
+
     <Button
+        android:id="@+id/Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Changes"
-        android:id="@+id/Submit"/>
-
-
+        android:text="Save Changes" />
 </LinearLayout>

@@ -50,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
-
+    public void StudentEditInfo(int SID){
+        EditStudentInfoFragment WF = new EditStudentInfoFragment(SID);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, WF);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
     public void HomeScreen() {
         WelcomeFragment WF = new WelcomeFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

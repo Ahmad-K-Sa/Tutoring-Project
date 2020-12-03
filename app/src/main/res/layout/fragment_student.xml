@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/RelContainer"
     android:background="@drawable/background"
     tools:context=".StudentFragment">
 
@@ -10,8 +12,9 @@
 
     <TextView
         android:id="@+id/names"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
@@ -26,33 +29,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/names"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/Info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="My Info"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:text="My Info" />
 
         <Button
             android:id="@+id/LogoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_marginRight="20dp"
             android:text="Logout" />
+
+        <Button
+            android:id="@+id/Edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/tutorsListView"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/TutorList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/container"
         android:layout_alignParentStart="true"
-
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        android:layout_marginTop="10dp" />
+    <!--    <ListView-->
+    <!--        android:id="@+id/tutorsListView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@+id/container"-->
+    <!--        android:layout_alignParentStart="true"-->
 
-</RelativeLayout>
+    <!--        android:layout_marginHorizontal="20dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />-->
+
+</LinearLayout>
