@@ -13,6 +13,7 @@ public class TutorCardAdapter extends RecyclerView.Adapter
         <TutorCardAdapter.ViewHolder> {
     String[] Usernames;
     Integer[] IDS;
+    int StudentID;
     String[] Firstnames;
     String[] Lastnames;
     Integer[] PhoneNums;
@@ -26,9 +27,10 @@ public class TutorCardAdapter extends RecyclerView.Adapter
         return new TutorCardAdapter.ViewHolder(cv);
     }
 
-    public TutorCardAdapter(Integer ID[],String[] usernames, String[] firstnames, String[] lastnames, Integer[] phoneNums, String[] addresses, String[] courses) {
+    public TutorCardAdapter(int StudentID,Integer ID[],String[] usernames, String[] firstnames, String[] lastnames, Integer[] phoneNums, String[] addresses, String[] courses) {
         Usernames = usernames;
         this.IDS = ID;
+        this.StudentID = StudentID;
         Firstnames = firstnames;
         Lastnames = lastnames;
         PhoneNums = phoneNums;
@@ -42,13 +44,6 @@ public class TutorCardAdapter extends RecyclerView.Adapter
         public ViewHolder(CardView cv) {
             super(cv);
             cardView = cv;
-            View.OnClickListener BackHome = new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ((MainActivity) view.getContext()).flipTutorHomePage(a);
-                }
-            };
-            cardView.setOnClickListener(BackHome);
         }
     }
 
@@ -74,6 +69,13 @@ public class TutorCardAdapter extends RecyclerView.Adapter
         TextView Course = cardView.findViewById(R.id.Courses);
         Course.setText(Courses[position]);
 
+        View.OnClickListener ViewSchedule = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) view.getContext()).flipTutorCourses(IDS[position],StudentID);
+            }
+        };
+        cardView.setOnClickListener(ViewSchedule);
     }
 
     public int getItemCount() {

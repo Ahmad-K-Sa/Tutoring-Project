@@ -33,6 +33,7 @@ public class StudentFragment extends Fragment {
     Integer[] PhoneNums;
     String[] Addresses;
     String[] Courses;
+    Integer[] IDs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +87,7 @@ public class StudentFragment extends Fragment {
 //        final ArrayList<Integer> TutuorIDs = new ArrayList<>();
 
         int size = cursor.getCount();
-
+        IDs = new Integer[size];
         Usernames = new String[size];
         Firstnames = new String[size];
         Lastnames = new String[size];
@@ -100,13 +101,13 @@ public class StudentFragment extends Fragment {
             while (!cursor.isLast()) {
 //                TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2) + "\n" + cursor.getString(3));
 //                TutuorIDs.add(cursor.getInt(0));
+                IDs[pos] = cursor.getInt(0);
                 Usernames[pos] = cursor.getString(1);
                 Firstnames[pos] = cursor.getString(2);
                 Lastnames[pos] = cursor.getString(3);
                 PhoneNums[pos] = cursor.getInt(4);
                 Addresses[pos] = cursor.getString(5);
                 Courses[pos] = cursor.getString(6);
-
                 cursor.moveToNext();
                 pos++;
             }
@@ -116,14 +117,15 @@ public class StudentFragment extends Fragment {
             PhoneNums[pos] = cursor.getInt(4);
             Addresses[pos] = cursor.getString(5);
             Courses[pos] = cursor.getString(6);
+            IDs[pos] = cursor.getInt(0);
 
-            TutorCardAdapter adapter = new TutorCardAdapter(Usernames,Firstnames,Lastnames,PhoneNums,Addresses,Courses);
+            TutorCardAdapter adapter = new TutorCardAdapter(StudentId,IDs,Usernames,Firstnames,Lastnames,PhoneNums,Addresses,Courses);
             TutorList.setAdapter(adapter);
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             TutorList.setLayoutManager(layoutManager);
 //            TutorsInfo.add(cursor.getString(1) + " " + cursor.getString(2) + "\n" + cursor.getString(3));
-//            TutuorIDs.add(cursor.getInt(0));
+//            TutuorIDs.add(cursor .getInt(0));
 //            ArrayAdapter Tutors = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, TutorsInfo);
 //            lv.setAdapter(Tutors);
         }
