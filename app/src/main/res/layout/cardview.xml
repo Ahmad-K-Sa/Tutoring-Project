@@ -3,69 +3,72 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="400dp"
-    android:layout_height="100dp"
+    android:layout_height="300dp"
     android:layout_gravity="center"
-    card_view:cardCornerRadius="4dp">
-    <LinearLayout
+    card_view:cardCornerRadius="4dp"
+    >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent" android:background="@drawable/background">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time: " />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/Time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date: " />
-
-            <TextView
-                android:id="@+id/Date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Subject: "/>
-
-            <TextView
-                android:id="@+id/Subject"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
         <TextView
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+                android:id="@+id/Subject"
+            android:textStyle="bold"
+
+            android:fontFamily="sans-serif"
+            android:text="Subject"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        <TextView
+
+            android:id="@+id/Date"
+            android:layout_marginBottom="20dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reserved by: "/>
+            android:layout_marginStart="20dp"
+            android:layout_below="@+id/Subject"
+            android:fontFamily="sans-serif"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/Time"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Subject"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="225dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/Date"
+            android:fontFamily="sans-serif"
+            android:text="Time"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
         <TextView
             android:id="@+id/StudentID"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Time"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="119dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif"
+            android:text="Reserved By:"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+
+    </RelativeLayout>
+
 </androidx.cardview.widget.CardView>

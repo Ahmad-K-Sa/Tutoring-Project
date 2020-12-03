@@ -1,63 +1,166 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context="com.example.tutoringproject.EditTutorInfoFragment">
-
+<ImageView
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:src="@drawable/logo2"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/image"></ImageView>
+    <TextView
+        android:layout_marginStart="20dp"
+        android:id="@+id/UsernameIn"
+        android:layout_below="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        ></TextView>
     <EditText
+        android:layout_marginStart="20dp"
+
+        android:layout_below="@+id/UsernameIn"
         android:id="@+id/UserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username"
         android:textAlignment="center" />
+    <TextView
+        android:layout_marginStart="20dp"
 
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/UserName"
+        ></TextView>
     <EditText
         android:id="@+id/PASSWORD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PASSWORD"
-        android:textAlignment="center" />
+        android:layout_below="@+id/password"
+        android:textAlignment="center"         android:layout_marginStart="20dp"
+        />
 
+    <TextView
+        android:layout_marginStart="20dp"
+
+        android:id="@+id/fname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/PASSWORD"
+        ></TextView>
     <EditText
+        android:layout_marginStart="20dp"
+
         android:id="@+id/FIRSTNAME"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FIRSTNAME"
+        android:layout_below="@+id/fname"
         android:textAlignment="center" />
 
+    <TextView
+        android:layout_marginStart="20dp"
+
+        android:id="@+id/lname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/FIRSTNAME"
+        ></TextView>
     <EditText
+        android:layout_marginStart="20dp"
+
         android:id="@+id/LASTNAME"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LASTNAME"
+        android:layout_below="@+id/lname"
         android:textAlignment="center" />
 
+    <TextView
+        android:layout_marginStart="20dp"
+
+        android:id="@+id/courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Courses"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/LASTNAME"
+        ></TextView>
     <EditText
+        android:layout_marginStart="20dp"
+
         android:id="@+id/COURSES"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="COURSES"
+        android:layout_below="@+id/courses"
         android:textAlignment="center" />
 
+    <TextView
+        android:layout_marginStart="20dp"
+
+        android:id="@+id/pn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/COURSES"
+        ></TextView>
     <EditText
+        android:layout_marginStart="20dp"
+
         android:id="@+id/PHONENUMBER"
+        android:layout_below="@+id/pn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:text="PHONENUMBER"
         android:textAlignment="center" />
+    <TextView
+        android:layout_marginStart="20dp"
 
+        android:id="@+id/addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/PHONENUMBER"
+        ></TextView>
     <EditText
+        android:layout_marginStart="20dp"
+
+        android:layout_below="@+id/addr"
         android:id="@+id/ADDRESS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADDRESS"
         android:textAlignment="center" />
 
     <Button
+        android:layout_marginStart="20dp"
+
         android:id="@+id/Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Changes" />
-</LinearLayout>
+        android:text="Save Changes"
+        android:layout_below="@+id/ADDRESS"/>
+</RelativeLayout>
