@@ -3,92 +3,80 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="400dp"
-    android:layout_height="100dp"
+    android:layout_height="280dp"
     android:layout_gravity="center"
-    card_view:cardCornerRadius="4dp">
+    card_view:cardCornerRadius="4dp" android:layout_marginBottom="20dp" >
 
     <LinearLayout
+        android:background="@drawable/background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Username: " />
-
-            <TextView
+                android:layout_width="match_parent"
+android:layout_marginBottom="20dp"
+                android:textAlignment="center"
                 android:id="@+id/UserName"
-                android:layout_width="wrap_content"
+                android:text="Username"
+android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name: " />
-
-            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:text="First Name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
                 android:id="@+id/FirstName"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:text="Last Name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
                 android:id="@+id/lastName"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone Number: " />
-
-            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:text="Phone Number"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
                 android:id="@+id/PhoneNumber"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address: " />
-
-            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:text="Address"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
                 android:id="@+id/Address"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Courses: " />
-
-            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:text="Courses"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
                 android:id="@+id/Courses"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
