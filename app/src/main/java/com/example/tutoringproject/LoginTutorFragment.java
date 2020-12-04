@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class LoginTutorFragment extends Fragment {
     SQLiteDatabase db;
@@ -72,10 +70,6 @@ public class LoginTutorFragment extends Fragment {
                         }
                         if (cursor.getString(1).equals(user) && cursor.getString(2).equals(pass))
                             ((MainActivity) getActivity()).flipTutorAccount(cursor.getInt(0));
-                        else {
-                            Toast.makeText(getContext(), "Incorrect username or password! Please try again", Toast.LENGTH_LONG).show();
-
-                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

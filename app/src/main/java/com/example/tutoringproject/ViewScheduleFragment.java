@@ -57,7 +57,6 @@ public class ViewScheduleFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-//        ListView lv = v.findViewById(R.id.ListViewSched);
         LinearLayout layout = v.findViewById(R.id.RelContainer);
         RecyclerView RV = v.findViewById(R.id.Sched_Recycler);
         Button Home = v.findViewById(R.id.homeButton);
@@ -112,7 +111,6 @@ public class ViewScheduleFragment extends Fragment {
                     Date[pos] = cursor.getString(4);
                     pos++;
                 }
-//                    SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
                 cursor.moveToNext();
 
             }
@@ -122,13 +120,10 @@ public class ViewScheduleFragment extends Fragment {
                 S_IDs[pos] = cursor.getInt(5);
                 Date[pos] = cursor.getString(4);
             }
-//                SchedItems.add(cursor.getString(1) + "\n" + cursor.getString(2));
-//            ArrayAdapter ItemsToDisplay = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, SchedItems);
             ScheduleCardAdapter Adapter = new ScheduleCardAdapter(Time, Date, S_IDs, Courses);
             RV.setAdapter(Adapter);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             RV.setLayoutManager(layoutManager);
-//            lv.setAdapter(ItemsToDisplay);
         }
     }
 }

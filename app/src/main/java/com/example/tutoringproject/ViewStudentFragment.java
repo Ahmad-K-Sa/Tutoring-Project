@@ -60,8 +60,8 @@ public class ViewStudentFragment extends Fragment {
             Phone.setText(cursor.getString(5));
             TextView Address = v.findViewById(R.id.Address);
             Address.setText(cursor.getString(6));
-            TextView Courses = v.findViewById(R.id.Courses);
-            Courses.setText("Level: " + cursor.getInt(4));
+            TextView Level = v.findViewById(R.id.Level);
+            Level.setText(cursor.getInt(4)+"");
         }
     }
 }

@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    public void StudentInfo(int TID){
-        ViewStudentFragment WF = new ViewStudentFragment(TID);
+    public void StudentInfo(int SID){
+        ViewStudentFragment WF = new ViewStudentFragment(SID);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, WF);
         ft.addToBackStack(null);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void flipStudentAccount(int id) {
-        StudentFragment studentFragment = new StudentFragment();
+        StudentFragment studentFragment = new StudentFragment(id);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, studentFragment);
         ft.addToBackStack(null);
