@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.tutoringproject.R;
 
@@ -117,9 +118,10 @@ public class ViewScheduleFragment extends Fragment {
             if (cursor.getInt(3) == TUTOR_ID) {
                 Time[pos] = cursor.getString(1);
                 Courses[pos] = cursor.getString(2);
-                S_IDs[pos] = cursor.getInt(5);
+                S_IDs[pos] = (cursor.getInt(5));
                 Date[pos] = cursor.getString(4);
             }
+            Toast.makeText(getActivity(),S_IDs.toString(),Toast.LENGTH_LONG);
             ScheduleCardAdapter Adapter = new ScheduleCardAdapter(Time, Date, S_IDs, Courses);
             RV.setAdapter(Adapter);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

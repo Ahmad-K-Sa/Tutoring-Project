@@ -62,7 +62,7 @@ public class TutorCoursesFragment extends Fragment {
         if (cursor.moveToFirst()) {
             ItemsExist = true;
             while (!cursor.isLast()) {
-                Data.add("Subject: " + cursor.getString(1) + "\n" + "Date: " + cursor.getString(2) + "Time: " + cursor.getString(3));
+                Data.add("Subject: " + cursor.getString(1) + "\n" + "Date: " + cursor.getString(2) +" "+"Time: " + cursor.getString(3));
                 Sched_IDs.add(cursor.getInt(0));
                 cursor.moveToNext();
             }
@@ -72,7 +72,6 @@ public class TutorCoursesFragment extends Fragment {
         ArrayAdapter items = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, Data);
         ListView list = view.findViewById(R.id.list);
         list.setAdapter(items);
-        Toast.makeText(getContext(), ID + " " + studentId, Toast.LENGTH_LONG).show();
         if (ItemsExist) {
             AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
                 @Override

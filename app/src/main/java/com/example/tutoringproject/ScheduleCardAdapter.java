@@ -1,6 +1,7 @@
 package com.example.tutoringproject;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -9,7 +10,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ScheduleCardAdapter extends RecyclerView.Adapter
-        <ScheduleCardAdapter.ViewHolder>{
+        <ScheduleCardAdapter.ViewHolder> {
 
     private String[] Times;
     private String[] Dates;
@@ -19,7 +20,7 @@ public class ScheduleCardAdapter extends RecyclerView.Adapter
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
 
-        public ViewHolder(CardView cv){
+        public ViewHolder(CardView cv) {
             super(cv);
             cardView = cv;
         }
@@ -31,15 +32,16 @@ public class ScheduleCardAdapter extends RecyclerView.Adapter
         StudentIDs = studentIDs;
         Subjects = subjects;
     }
+
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder (@NonNull ViewGroup viewGroup, int viewType){
-        CardView cv = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview,viewGroup,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        CardView cv = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview, viewGroup, false);
         return new ViewHolder(cv);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder,int position){
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         CardView cardView = viewHolder.cardView;
         TextView Time = cardView.findViewById(R.id.Time);
 
@@ -49,12 +51,21 @@ public class ScheduleCardAdapter extends RecyclerView.Adapter
         Date.setText(Dates[position]);
         TextView SID = cardView.findViewById(R.id.StudentID);
 
-        if(StudentIDs[position] == null)
-            SID.setText("-1");
-        else SID.setText(StudentIDs[position].toString());
-
+        if (StudentIDs[position] == 0)
+            SID.setText("Not Reserved");
+        else {
+            SID.setText("Reserved");
+            View.OnClickListener Info = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) view.getContext()).StudentInfo(StudentIDs[position]);
+                }
+            };
+            cardView.setOnClickListener(Info);
+        }
         TextView Subject = cardView.findViewById(R.id.Subject);
         Subject.setText(Subjects[position]);
+
     }
 
     @Override

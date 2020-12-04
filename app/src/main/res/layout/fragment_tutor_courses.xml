@@ -2,26 +2,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tutoringproject.TutorCoursesFragment"
-    android:background="@drawable/background">
-<TextView
-    android:fontFamily="sans-serif-light"
-    android:layout_margin="20dp"
-    android:id="@+id/courses"
-    android:layout_centerHorizontal="true"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="List of Available Courses:"
-    android:textColor="@color/black"
-    android:textSize="25sp" android:textStyle="bold"></TextView>
+    android:background="@drawable/background"
+    tools:context="com.example.tutoringproject.TutorCoursesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <TextView
+        android:id="@+id/courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/courses"
         android:layout_margin="20dp"
+        android:fontFamily="sans-serif-light"
+        android:text="List of Available Courses:"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"></TextView>
+
+    TODO: Update blank fragment layout
+
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list"></ListView>
+        android:layout_below="@+id/courses"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp" />
+
 
 </RelativeLayout>
