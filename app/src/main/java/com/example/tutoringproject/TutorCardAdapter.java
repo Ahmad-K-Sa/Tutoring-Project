@@ -54,11 +54,8 @@ public class TutorCardAdapter extends RecyclerView.Adapter
         TextView Username = cardView.findViewById(R.id.UserName);
         Username.setText(Usernames[position]);
 
-        TextView FirstName = cardView.findViewById(R.id.FirstName);
-        FirstName.setText(Firstnames[position]);
-
-        TextView LastName = cardView.findViewById(R.id.lastName);
-        LastName.setText(Usernames[position]);
+        TextView Name = cardView.findViewById(R.id.Name);
+        Name.setText(Firstnames[position]+ " "+ Lastnames[position]);
 
         TextView Phone = cardView.findViewById(R.id.PhoneNumber);
         Phone.setText(PhoneNums[position].toString());

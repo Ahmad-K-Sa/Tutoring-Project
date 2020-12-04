@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.icu.number.IntegerWidth;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,8 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.example.tutoringproject.R;
 
 import java.util.ArrayList;
 
@@ -47,33 +44,38 @@ public class TutorCoursesFragment extends Fragment {
     public void setId(int id) {
         this.ID = id;
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        db.close();
+        cursor.close();
+    }
     @Override
     public void onStart() {
         View view = getView();
         super.onStart();
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getActivity());
         db = helper.getReadableDatabase();
-        cursor = db.query("SCHEDULES", new String[]{"_id", "SUBJECT", "DATE", "TIME"}, "TUTOR_ID=?", new String[]{Integer.toString(ID)}, null, null, null);
+        cursor = db.query("SCHEDULES", new String[]{"_id", "SUBJECT", "DATE", "TIME", "STUDENT_ID"}, "TUTOR_ID=?", new String[]{Integer.toString(ID)}, null, null, null);
 
         ArrayList<String> Data = new ArrayList();
-        final ArrayList<Integer> Sched_IDs = new ArrayList<>();
+        final ArrayList<Integer> Sched_IDs = new ArrayList();
         Boolean ItemsExist = false;
         if (cursor.moveToFirst()) {
             ItemsExist = true;
             while (!cursor.isLast()) {
-                Data.add("Subject: " + cursor.getString(1) + "\n" + "Date: " + cursor.getString(2) +" "+"Time: " + cursor.getString(3));
+                Data.add("Subject: " + cursor.getString(1) + "\n" + "Date: " + cursor.getString(2) + " " + "Time: " + cursor.getString(3) + "\n" + (cursor.getInt(4) != 0 ? "Reserverd" : "Not Reserved"));
                 Sched_IDs.add(cursor.getInt(0));
                 cursor.moveToNext();
             }
-            Data.add("Subject: " + cursor.getString(1) + "\n" + "Date: " + cursor.getString(2) + "Time: " + cursor.getString(3));
+            Data.add("Subject: " + cursor.getString(1) + "\n" + "Date: " + cursor.getString(2) + " " + "Time: " + cursor.getString(3) + "\n" + (cursor.getInt(4) != 0 ? "Reserverd" : "Not Reserved"));
             Sched_IDs.add(cursor.getInt(0));
         }
         ArrayAdapter items = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, Data);
-        ListView list = view.findViewById(R.id.list);
+        final ListView list = view.findViewById(R.id.list);
         list.setAdapter(items);
         if (ItemsExist) {
-            AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
+            final AdapterView.OnItemClickListener adapter = new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                     int id2 = (int) id;
@@ -81,20 +83,23 @@ public class TutorCoursesFragment extends Fragment {
                     db = helper.getWritableDatabase();
                     cursor = db.query("SCHEDULES", new String[]{"_id", "SUBJECT", "DATE", "TIME", "STUDENT_ID", "TUTOR_ID"}, "TUTOR_ID=?", new String[]{Integer.toString(ID)}, null, null, null);
                     if (cursor.moveToFirst()) {
-                        ContentValues contentValues = new ContentValues();
-                        contentValues.put("SUBJECT", cursor.getString(1));
-                        contentValues.put("DATE", cursor.getString(2));
-                        contentValues.put("TIME", cursor.getString(3));
-                        contentValues.put("STUDENT_ID", studentId);
-                        contentValues.put("TUTOR_ID", Integer.parseInt(cursor.getString(5)));
-
-                        String whereClause = "_id=?";
-                        String whereArgs[] = {Integer.toString(Sched_IDs.get(position))};
-                        db.update("SCHEDULES", contentValues, whereClause, whereArgs);
-
-                        Toast.makeText(getContext(), "You registered the course. Thank you!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getContext(), "That instructor does not have free times, check later.", Toast.LENGTH_SHORT).show();
+                        if (cursor.getInt(4) == 0) {
+                            ContentValues contentValues = new ContentValues();
+                            contentValues.put("SUBJECT", cursor.getString(1));
+                            contentValues.put("DATE", cursor.getString(2));
+                            contentValues.put("TIME", cursor.getString(3));
+                            contentValues.put("STUDENT_ID", Integer.parseInt(studentId + ""));
+                            contentValues.put("TUTOR_ID", Integer.parseInt(cursor.getString(5)));
+                            String whereClause = "_id=?";
+                            String whereArgs[] = {Integer.toString(Sched_IDs.get(position))};
+                            int a = db.update("SCHEDULES", contentValues, whereClause, whereArgs);
+                            if (a == -1 || a == 0)
+                                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getContext(), "You registered the course. Thank you!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "That course is already registered", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             };

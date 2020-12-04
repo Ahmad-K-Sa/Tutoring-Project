@@ -48,10 +48,7 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(TUTORS);
         db.execSQL(Schedules);
     }
-    private void insertStudent(SQLiteDatabase db,
-                               String answer,
-                               int imageID) {
-    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
