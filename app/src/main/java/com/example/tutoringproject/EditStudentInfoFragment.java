@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.tutoringproject.R;
 
@@ -51,7 +52,6 @@ public class EditStudentInfoFragment extends Fragment {
         SQLiteOpenHelper helper = new DatabaseSQLiteOpenHelper(getContext());
         db = helper.getWritableDatabase();
         cursor = db.query("STUDENTS", new String[]{"_id", "USERNAME", "PASSWORD", "FIRSTNAME", "LASTNAME", "LEVEL", "PHONENUMBER", "ADDRESS"}, "_id=?", new String[]{Integer.toString(Student_ID)}, null, null, null);
-        cursor.moveToFirst();
         if (cursor.moveToFirst()) {
             EditText USERNAME = v.findViewById(R.id.UserName);
             EditText PASSWORD = v.findViewById(R.id.PASSWORD);

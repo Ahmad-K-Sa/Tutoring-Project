@@ -29,7 +29,6 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "USERNAME TEXT," +
                 "PASSWORD TEXT," +
                 "COURSES TEXT," +
-//                "SCHEDULEKEY INTEGER UNIQUE," +
                 "FIRSTNAME TEXT ," +
                 "LASTNAME TEXT," +
                 "PHONENUMBER INTEGER," +
@@ -45,23 +44,14 @@ public class DatabaseSQLiteOpenHelper extends SQLiteOpenHelper {
                 "FOREIGN_KEY TUTOR_ID REFERENCES TUTORS(_id)," +
                 "FOREIGN KEY (Student_id) REFERENCES STUDENTS(_id));";
 
-//
-//        String Courses = "CREATE TABLE COURSES (" +
-//                "NAME TEXT," +
-//                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-//                "FOREIGN KEY (COURSES) REFERENCES TUTORS(COURSES));";
-
         db.execSQL(STUDENTS);
         db.execSQL(TUTORS);
         db.execSQL(Schedules);
-//        db.execSQL(Courses);
     }
-
     private void insertStudent(SQLiteDatabase db,
                                String answer,
                                int imageID) {
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
